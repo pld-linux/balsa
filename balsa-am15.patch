@@ -38,78 +38,6 @@
  
  INCLUDES=-I. -I$(top_srcdir) \
  	-I$(top_builddir)/libmutt \
---- balsa-1.1.7.new/src/Makefile.am~	Thu Jul 12 09:08:46 2001
-+++ balsa-1.1.7.new/src/Makefile.am	Sun Sep  9 21:35:34 2001
-@@ -1,6 +1,6 @@
- bin_PROGRAMS = balsa
- 
--balsa_BASE_SOURCES =	\
-+balsa_SOURCES = 		\
- 	address-book.c		\
- 	address-book.h		\
- 	address-book-config.c	\
-@@ -52,14 +52,6 @@
- 	spell-check.c		\
- 	spell-check.h		
- 
--balsa_IDL_SOURCES = \
--	balsa-common.c		\
--	balsa-skels.c		\
--	balsa-stubs.c		
--balsa_IDL_SOURCES = 
--
--balsa_SOURCES = $(balsa_BASE_SOURCES) $(balsa_IDL_SOURCES)
--
- INCLUDES = \
- 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
- 	-I$(top_srcdir) \
-@@ -67,8 +59,6 @@
- 	-I$(top_srcdir)/libmutt \
- 	 $(GNOME_INCLUDEDIR)
- 
--CFLAGS += $(GTKHTML_CFLAGS) $(PIXBUF_FLAGS)
--
- balsa_LDADD = \
- 	$(top_builddir)/libbalsa/libbalsa.a	\
- 	$(top_builddir)/libmutt/imap/libimap.a	\
-@@ -76,7 +66,7 @@
- 	$(top_builddir)/libinit_balsa/libinit_balsa.a \
- 	-lpspell \
- 	-lltdl \
--	@LIBESD_LIB@ \
-+	$(LIBESD_LIB) \
- 	$(GNOME_LIBDIR) \
- 	$(GNOMEUI_LIBS) \
- 	$(INTLLIBS) \
-@@ -85,27 +75,9 @@
- 	$(GTKHTML_LIBS)	\
- 	$(PIXBUF_LIBS)
- 
--balsa_DEPENDENCIES = \
--	$(top_builddir)/libbalsa/libbalsa.a	\
--	$(top_builddir)/libmutt/libmutt.a	\
--        $(top_builddir)/libmutt/imap/libimap.a	\
--	$(top_builddir)/libmutt/libmutt.a	\
--	$(top_builddir)/libinit_balsa/libinit_balsa.a
-+balsa_CFLAGS = $(GTKHTML_CFLAGS) $(PIXBUF_FLAGS)
- 
- dist-hook:
- 	mkdir $(distdir)/pixmaps
- 	cp $(srcdir)/pixmaps/*.xpm $(distdir)/pixmaps
- 
--idldir = $(datadir)/idl
--
--idl_DATA = #../idl/balsa.idl
--
--CORBA_SRCLIST = balsa-common.c balsa-skels.c balsa-stubs.c \
--                balsa.h
--
--
--BALSA_ORB_SRCLIST = orbit-glue.c 
--
--
--$(CORBA_SRCLIST): $(idl_DATA)
--		$(ORBIT_IDL) $(idl_DATA)
 --- balsa-1.1.7.new/libbalsa/Makefile.am~	Thu Jul 12 09:08:46 2001
 +++ balsa-1.1.7.new/libbalsa/Makefile.am	Sun Sep  9 21:38:13 2001
 @@ -62,8 +62,5 @@
@@ -145,3 +73,76 @@
 -soundlistdir = @gnomeconfdir@/sound/events
 +soundlistdir = $(gnomeconfdir)/sound/events
  soundlist_DATA = $(balsa_SOUNDLISTS)
+--- balsa-1.2.0/configure.in~	Tue Sep 18 15:28:58 2001
++++ balsa-1.2.0/configure.in	Wed Sep 19 22:13:03 2001
+@@ -113,10 +113,6 @@
+ dnl Substitutions, defines, part I
+ dnl ###########################################################################
+ 
+-AC_SUBST(CFLAGS)
+-AC_SUBST(CPPFLAGS)
+-AC_SUBST(LDFLAGS)
+-
+ dnl No choice about this
+ gnome_cv_use_gnome=yes
+ 
+--- balsa-1.2.0/src/Makefile.am.orig	Thu Sep  6 10:59:38 2001
++++ balsa-1.2.0/src/Makefile.am	Wed Sep 19 22:41:30 2001
+@@ -1,6 +1,6 @@
+ bin_PROGRAMS = balsa
+ 
+-balsa_BASE_SOURCES =	\
++balsa_SOURCES =	\
+ 	address-book.c		\
+ 	address-book.h		\
+ 	address-book-config.c	\
+@@ -55,21 +55,12 @@
+ 	toolbar-factory.c	\
+ 	toolbar-factory.h
+ 
+-balsa_IDL_SOURCES = \
+-	balsa-common.c		\
+-	balsa-skels.c		\
+-	balsa-stubs.c		
+-balsa_IDL_SOURCES = 
+-
+-balsa_SOURCES = $(balsa_BASE_SOURCES) $(balsa_IDL_SOURCES)
+-
+ INCLUDES = \
+ 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
+ 	-I$(top_srcdir) \
+ 	-I$(top_srcdir)/libbalsa
+ 
+-CFLAGS += $(PCRE_CFLAGS) 
+-
++blsa_CFLAGS = $(PCRE_CFLAGS)
+ balsa_LDADD = \
+ 	$(top_builddir)/libbalsa/libbalsa.a	\
+ 	$(top_builddir)/libmutt/imap/libimap.a	\
+@@ -81,26 +72,6 @@
+ 	$(PCRE_LIBS) \
+ 	$(PTHREAD_LIB)
+ 
+-balsa_DEPENDENCIES = \
+-	$(top_builddir)/libbalsa/libbalsa.a	\
+-	$(top_builddir)/libmutt/libmutt.a	\
+-        $(top_builddir)/libmutt/imap/libimap.a	\
+-	$(top_builddir)/libmutt/libmutt.a	\
+-	$(top_builddir)/libinit_balsa/libinit_balsa.a
+-
+ dist-hook:
+ 	mkdir $(distdir)/pixmaps
+ 	cp $(srcdir)/pixmaps/*.xpm $(distdir)/pixmaps
+-
+-idldir = $(datadir)/idl
+-
+-idl_DATA = #../idl/balsa.idl
+-
+-CORBA_SRCLIST = balsa-common.c balsa-skels.c balsa-stubs.c \
+-                balsa.h
+-
+-BALSA_ORB_SRCLIST = orbit-glue.c 
+-
+-
+-$(CORBA_SRCLIST): $(idl_DATA)
+-		$(ORBIT_IDL) $(idl_DATA)
