@@ -2,16 +2,16 @@
 # Conditional build:
 # --without ldap
 
-%define		snap	20030322
+%define		snap	20030505
 
 Summary:	balsa - GNOME e-Mail program
 Summary(pl):	Klient poczty dla GNOME z silnikiem mutt-a
 Summary(es):	Balsa es un lector de e-mail. Usa el toolkit GTK
 Summary(pt_BR):	Balsa é um leitor de e-mail. Usa o toolkit GTK
 Name:		balsa
-Version:	2.0.10
-#Release:	1.%{snap}.1
-Release:	2
+Version:	2.0.11
+#Release:	1.%{snap}
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
@@ -23,14 +23,14 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libesmtp-devel
 BuildRequires:	libgnomeprintui-devel >= 1.106.0
-BuildRequires:	gpgme-devel >= 0.4.0
+BuildRequires:	gpgme-devel >= 0.3.14 
 BuildRequires:	gtk+2-devel >= 2.2.0
 BuildRequires:  libgtkhtml-devel
 BuildRequires:  libgnome-devel
 BuildRequires:  libgnomeui-devel
 %{!?_without_ldap:BuildRequires:	openldap-devel}
 BuildRequires:  aspell-devel >= 0.50
-Requires:	gpgme >= 0.4.0
+Requires:	gpgme >= 0.3.14
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -60,8 +60,8 @@ Suporta caixas de correio locais, POP3 a IMAP.
 %patch1 -p1
 
 %build
-#glib-gettextize --copy --force
-#intltoolize --copy --force
+#%glib-gettextize --copy --force
+#%intltoolize --copy --force
 #%%{__libtoolize}
 #%%{__aclocal}
 #%%{__autoheader}
@@ -78,7 +78,7 @@ Suporta caixas de correio locais, POP3 a IMAP.
 #./autogen.sh
 %configure \
 	--with-ssl \
-	--enable-gpgme \
+	--with-gpgme \
 	%{!?_without_ldap:--enable-ldap} \
 	%{?_without_ldap:--disable-ldap}
 
