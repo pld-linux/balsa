@@ -20,7 +20,7 @@ Patch0:		%{name}-locale-names.patch
 #Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-iconv-in-libc.patch
 URL:		http://balsa.gnome.org/
-BuildRequires:	aspell-devel >= 0.50
+BuildRequires:	aspell-devel >= 2:0.50
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 %{?with_esmtp:BuildRequires:	libesmtp-devel}
