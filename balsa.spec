@@ -48,7 +48,7 @@ rm -rf $RPM_BUILD_ROOT
 
 make install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	desktopdir=%{_applnkdir}/Networking/Mail
+	desktopdir=%{_applnkdir}/Network/Mail
 
 gzip -9nf AUTHORS ChangeLog NEWS README TODO \
 	$RPM_BUILD_ROOT%{_mandir}/man1/*
@@ -66,5 +66,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/sound/events/*
 %{_datadir}/sounds/balsa
 %{_datadir}/pixmaps/*
-%{_applnkdir}/Networking/Mail/*
+%{_applnkdir}/Network/Mail/*
 %{_mandir}/man1/*
