@@ -1,7 +1,10 @@
---- balsa-2.0.10/balsa.desktop~	Sun Feb 23 20:25:28 2003
-+++ balsa-2.0.10/balsa.desktop	Fri Mar 28 11:16:16 2003
-@@ -76,4 +76,4 @@
- Terminal=0
+--- balsa-2.0.17/balsa.desktop~	Sun Feb 23 20:25:28 2003
++++ balsa-2.0.17/balsa.desktop	Fri Mar 28 11:16:16 2003
+@@ -78,6 +78,6 @@
+ Exec=balsa
+ Icon=gnome-balsa2.png
+-Terminal=0
++Terminal=false
  Type=Application
  StartupNotify=true
 -Categories=GNOME;Application;Network
