@@ -27,6 +27,7 @@ BuildRequires:	automake
 BuildRequires:	libgnomeprintui-devel >= 1.106.0
 %{?with_gpgme:BuildRequires:	gpgme-devel >= 0.4.3}
 BuildRequires:	gtk+2-devel >= 2.2.0
+BuildRequires:	intltool
 # gtkhtml 3.0 is preferred over libgtkhtml-2* if present, but we have gtkhtml 3.1 now
 %{?with_gtkhtml:BuildRequires:	libgtkhtml-devel >= 2.0}
 %{?with_gtkhtml:BuildConflicts:	gtkhtml-devel < 3.1}
