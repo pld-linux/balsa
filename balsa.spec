@@ -1,7 +1,7 @@
 Summary:	balsa - GNOME e-Mail program
 Name:		balsa
 Version:	0.8.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/GNOME
 Group(pl):	X11/GNOME
