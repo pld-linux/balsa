@@ -1,8 +1,8 @@
 Summary:	balsa - GNOME e-Mail program
 Summary(pl):	Klient poczty dla GNOME z silnikiem mutt-a
 Name:		balsa
-Version:	1.1.0
-Release:	2
+Version:	1.1.1
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Group(de):	X11/Applikationen
