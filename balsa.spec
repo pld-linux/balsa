@@ -30,6 +30,7 @@ BuildRequires:	libgnomeprintui-devel >= 1.106.0
 %{!?_without_gpgme:BuildRequires:	gpgme-devel >= 0.3.14}
 BuildRequires:	gtk+2-devel >= 2.2.0
 %{!?_without_gtkhtml:BuildRequires:	libgtkhtml-devel}
+BuildRequires:	libltdl-devel
 BuildRequires:	libgnome-devel
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 %{!?_without_ldap:BuildRequires:	openldap-devel}
