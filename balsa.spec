@@ -1,13 +1,15 @@
 Summary:	balsa - GNOME e-Mail program
 Summary(pl):	Klient poczty dla GNOME z silnikiem mutt-a
 Name:		balsa
-Version:	1.1.2
+Version:	1.1.3
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
 Source0:	http://www.theochem.kth.se/~pawsa/balsa/%{name}-%{version}.tar.gz
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	docbook-style-dsssl
 BuildRequires:	docbook-gnome-dtd10-sgml
@@ -50,6 +52,9 @@ potê¿niejszy i ³atwo go skonfigurowaæ.
 
 %build
 gettextize --copy --force 
+aclocal -I macros
+autoconf
+automake -a -c
 %configure \
 	--enable-system-install \
 	--enable-all \
@@ -60,7 +65,8 @@ gettextize --copy --force
 	--with-ssl \
 	--enable-ldap \
 	--enable-gtkhtml
-%{__make}
+%{__make} \
+	GDP_STYLESHEET=/usr/share/sgml/docbook/gnome-customization-1.0/docbook-gnome-3.1.dtd
 
 %install
 rm -rf $RPM_BUILD_ROOT
