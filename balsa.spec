@@ -68,16 +68,17 @@ Suporta caixas de correio locais, POP3 a IMAP.
 %patch0 -p1
 
 %build
+rm -f {,libmutt/}missing
 %{__libtoolize}
 %{__gettextize}
-aclocal -I macros
+%{__aclocal} -I macros
 %{__autoconf}
-rm -f missing
 %{__automake}
-(cd libmutt
-aclocal
+cd libmutt
+%{__aclocal}
 %{__autoconf}
-automake -a -c)
+%{__automake}
+cd ..
 %configure \
 	--enable-system-install \
 	--enable-all \
