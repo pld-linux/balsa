@@ -1,5 +1,5 @@
 
-%define		snap	20030115
+%define		snap	20030124
 
 Summary:	balsa - GNOME e-Mail program
 Summary(pl):	Klient poczty dla GNOME z silnikiem mutt-a
