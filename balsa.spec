@@ -80,6 +80,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_sysconfdir}/sound/events/*
 %{_datadir}/sounds/balsa
-%{_datadir}/pixmaps/*
+%{_pixmapsdir}/*
 %{_applnkdir}/Network/Mail/*
 %{_mandir}/man1/*
