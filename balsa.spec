@@ -30,6 +30,7 @@ BuildRequires:  libgnome-devel
 BuildRequires:  libgnomeui-devel
 %{!?_without_ldap:BuildRequires:	openldap-devel}
 BuildRequires:  aspell-devel >= 0.50
+BuildRequires:	xft-devel
 Requires:	gpgme >= 0.3.14
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
