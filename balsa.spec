@@ -29,7 +29,7 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
 BuildRequires:	openjade
 BuildRequires:	openldap-devel
-BuildRequires:	openssl-devel >= 0.9.6k
+BuildRequires:	openssl-devel >= 0.9.6m
 BuildRequires:	pam-devel
 BuildRequires:	pcre-devel
 BuildRequires:	pspell-devel >= 12.1
