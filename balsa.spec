@@ -26,11 +26,11 @@ BuildRequires:	libesmtp-devel
 BuildRequires:	libgnomeprintui-devel >= 1.106.0
 BuildRequires:	gpgme-devel >= 0.3.14 
 BuildRequires:	gtk+2-devel >= 2.2.0
-BuildRequires:  libgtkhtml-devel
-BuildRequires:  libgnome-devel
-BuildRequires:  libgnomeui-devel >= 2.3.3.1-2
+BuildRequires:	libgtkhtml-devel
+BuildRequires:	libgnome-devel
+BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 %{!?_without_ldap:BuildRequires:	openldap-devel}
-BuildRequires:  aspell-devel >= 0.50
+BuildRequires:	aspell-devel >= 0.50
 BuildRequires:	xft-devel
 Requires:	gpgme >= 0.3.14
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
