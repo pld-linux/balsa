@@ -1,3 +1,6 @@
+#
+# Conditional build:
+# --without ldap
 
 %define		snap	20030322
 
@@ -25,6 +28,7 @@ BuildRequires:	gtk+2-devel >= 2.2.0
 BuildRequires:  libgtkhtml-devel
 BuildRequires:  libgnome-devel
 BuildRequires:  libgnomeui-devel
+%{!?_without_ldap:BuildRequires:	openldap-devel}
 BuildRequires:  aspell-devel >= 0.50
 Requires:	gpgme >= 0.4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -75,7 +79,8 @@ Suporta caixas de correio locais, POP3 a IMAP.
 %configure \
 	--with-ssl \
 	--enable-gpgme \
-	--enable-ldap
+	%{!?_without_ldap:--enable-ldap} \
+	%{?_without_ldap:--disable-ldap}
 
 %{__make} 
 
