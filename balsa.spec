@@ -1,18 +1,18 @@
 
-%define		snap	20030103
+%define		snap	20030104
 
 Summary:	balsa - GNOME e-Mail program
 Summary(pl):	Klient poczty dla GNOME z silnikiem mutt-a
 Summary(es):	Balsa es un lector de e-mail. Usa el toolkit GTK
 Summary(pt_BR):	Balsa é um leitor de e-mail. Usa o toolkit GTK
 Name:		balsa
-Version:	2.0.4
-Release:	0.%{snap}.1
+Version:	2.0.5
+Release:	1
 License:	GPL
 Group:		X11/Applications
-#Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
-Source0:	%{name}-%{version}-%{snap}.tar.bz2
-Patch0:		%{name}-libtool_hack.patch
+Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
+#Source0:	%{name}-%{version}-%{snap}.tar.bz2
+#Patch0:		%{name}-libtool_hack.patch
 URL:		http://balsa.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -44,13 +44,12 @@ Suporta caixas de correio locais, POP3 a IMAP.
 
 %prep
 %setup -q
-%patch0 -p1
+#%patch0 -p1
 
 %build
-NOCONFIGURE=1 ./autogen.sh
+#NOCONFIGURE=1 ./autogen.sh
 %configure
 
-# TODO find this gdp stylesheet
 %{__make} 
 
 %install
