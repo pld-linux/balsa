@@ -1,12 +1,12 @@
 Summary:	balsa - GNOME e-Mail program
 Name:		balsa
-Version:	0.9.1
+Version:	0.9.2
 Release:	1
 License:	GPL
 Group:		X11/GNOME
 Group(pl):	X11/GNOME
 Source0:	http://www.theochem.kth.se/~pawsa/balsa/%{name}-%{version}.tar.gz
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-devel >= 1.2.0
 BuildRequires:	gnome-libs-devel
 BuildRequires:	libPropList-devel
 URL:		http://www.newton.cx/balsa/main.html
