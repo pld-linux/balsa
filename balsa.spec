@@ -1,6 +1,9 @@
 #
 # Conditional build:
 # --without ldap
+# --without gpgme		# experimental.
+# --without esmtp
+# --without gtkhtml
 
 %define		snap	20030630
 
@@ -22,11 +25,11 @@ Patch1:		%{name}-desktop.patch
 URL:		http://balsa.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	libesmtp-devel
+%{!?_without_esmtp:BuildRequires:	libesmtp-devel}
 BuildRequires:	libgnomeprintui-devel >= 1.106.0
-BuildRequires:	gpgme-devel >= 0.3.14
+%{!?_without_gpgme:BuildRequires:	gpgme-devel >= 0.3.14}
 BuildRequires:	gtk+2-devel >= 2.2.0
-BuildRequires:	libgtkhtml-devel
+%{!?_without_gtkhtml:BuildRequires:	libgtkhtml-devel}
 BuildRequires:	libgnome-devel
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 %{!?_without_ldap:BuildRequires:	openldap-devel}
@@ -65,7 +68,10 @@ Suporta caixas de correio locais, POP3 a IMAP.
 #./autogen.sh
 %configure \
 	--with-ssl \
-	--with-gpgme \
+	%{?_without_esmtp:--without-esmtp} \
+	%{!?_without_gtkhtml:--enable-gtkhtml} \
+	%{?_without_gtkhtml:--disable-gtkhtml}\
+	%{?_without_gpgme:--without-gpgme} \
 	%{!?_without_ldap:--with-ldap} \
 	%{?_without_ldap:--without-ldap}
 
