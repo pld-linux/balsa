@@ -3,12 +3,11 @@ Summary(pl):	Klient poczty dla GNOME z silnikiem mutt-a
 Summary(es):	Balsa es un lector de e-mail. Usa el toolkit GTK
 Summary(pt_BR):	Balsa é um leitor de e-mail. Usa o toolkit GTK
 Name:		balsa
-Version:	1.3.6
+Version:	1.4.3
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://www.theochem.kth.se/~pawsa/balsa/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-ac253.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bison
@@ -30,11 +29,11 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
 BuildRequires:	openjade
 BuildRequires:	openldap-devel
-BuildRequires:	openssl-devel
+BuildRequires:	openssl-devel >= 0.9.6j
 BuildRequires:	pam-devel
 BuildRequires:	pcre-devel
 BuildRequires:	pspell-devel >= 12.1
-URL:		http://www.balsa.net/
+URL:		http://balsa.gnome.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -65,7 +64,6 @@ Suporta caixas de correio locais, POP3 a IMAP.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 libtoolize --copy --force
@@ -101,8 +99,6 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	desktopdir=%{_applnkdir}/Network/Mail
 
-gzip -9nf AUTHORS ChangeLog NEWS README TODO
-
 %find_lang %{name} --with-gnome
 
 %clean
@@ -110,7 +106,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc *.gz
+%doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/*
 %{_sysconfdir}/sound/events/*
 %{_datadir}/sounds/balsa
