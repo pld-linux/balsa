@@ -6,8 +6,8 @@ License:	GPL
 Group:		X11/GNOME
 Group(pl):	X11/GNOME
 Source0:	http://www.theochem.kth.se/~pawsa/balsa/%{name}-%{version}.tar.gz
-BuildRequires:	gettext-devel >= 1.2.0
-BuildRequires:	gnome-libs-devel
+BuildRequires:	gettext-devel
+BuildRequires:	gnome-libs-devel >= 1.2.0
 BuildRequires:	libPropList-devel
 URL:		http://www.newton.cx/balsa/main.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
