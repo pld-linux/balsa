@@ -26,7 +26,7 @@ BuildRequires:	automake
 %{?with_esmtp:BuildRequires:	libesmtp-devel}
 BuildRequires:	libgnomeprintui-devel >= 1.106.0
 BuildRequires:	gmime-devel >= 2.1.9
-%{?with_gpgme:BuildRequires:	gpgme-devel >= 0.4.3}
+%{?with_gpgme:BuildRequires:	gpgme-devel >= 1:0.4.3}
 BuildRequires:	gtk+2-devel >= 2:2.2.0
 BuildRequires:	intltool
 %{?with_gtkhtml:BuildRequires:	libgtkhtml-devel >= 2.0}
