@@ -4,6 +4,7 @@ Version:	0.6.0
 Release:	1
 License:	GPL
 Group:		X11/GNOME
+Group(pl):	X11/GNOME
 Source0:	ftp://ftp.balsa.net/pub/balsa/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
 BuildRequires:	gettext-devel
@@ -18,16 +19,17 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_localstatedir	/var
 
 %description
-e-Mail program for the GNOME desktop, supporting local mailboxes, POP3 and
-IMAP. GNOME is the GNU Network Object Model Environment. That's a fancy name
-but really GNOME is a nice GUI desktop environment. It makes using your
-computer easy, powerful, and easy to configure.
+e-Mail program for the GNOME desktop, supporting local mailboxes, POP3
+and IMAP. GNOME is the GNU Network Object Model Environment. That's a
+fancy name but really GNOME is a nice GUI desktop environment. It
+makes using your computer easy, powerful, and easy to configure.
 
 %description -l pl
-Balsa to klient e-mail dla ¶rodowiska GNOME. Obs³uguje POP3, IMAP oraz lokalne 
-skrzynki pocztowe. GNOME to Network Object Model Environment. Mimo osobliwej
-nazwy jest to naparwdê estetyczne ¶rodowisko graficzne. Dziêki niemu u¿ywanie
-komputera jest ³atwiejsze; system jest potê¿niejszy i ³atwo go skonfigurowaæ.
+Balsa to klient e-mail dla ¶rodowiska GNOME. Obs³uguje POP3, IMAP oraz
+lokalne skrzynki pocztowe. GNOME to Network Object Model Environment.
+Mimo osobliwej nazwy jest to naparwdê estetyczne ¶rodowisko graficzne.
+Dziêki niemu u¿ywanie komputera jest ³atwiejsze; system jest
+potê¿niejszy i ³atwo go skonfigurowaæ.
 
 %prep
 %setup -q
