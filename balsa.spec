@@ -15,6 +15,7 @@ Source0:	%{name}-%{version}-%{snap}.tar.bz2
 URL:		http://balsa.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	libesmtp-devel
 BuildRequires:	libgnomeprintui-devel >= 1.106.0
 BuildRequires:	gtk+2-devel 
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
