@@ -1,0 +1,8 @@
+--- balsa-2.0.10/balsa.desktop~	Sun Feb 23 20:25:28 2003
++++ balsa-2.0.10/balsa.desktop	Fri Mar 28 11:16:16 2003
+@@ -76,4 +76,4 @@
+ Terminal=0
+ Type=Application
+ StartupNotify=true
+-Categories=GNOME;Application;Network
++Categories=GNOME;Application;Network;Email
