@@ -20,11 +20,13 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libesmtp-devel
 BuildRequires:	libgnomeprintui-devel >= 1.106.0
+BuildRequires:	gpgme-devel >= 0.4.0
 BuildRequires:	gtk+2-devel >= 2.2.0
 BuildRequires:  libgtkhtml-devel
 BuildRequires:  libgnome-devel
 BuildRequires:  libgnomeui-devel
 BuildRequires:  aspell-devel >= 0.50
+Requires:	gpgme >= 0.4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
