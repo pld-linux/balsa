@@ -8,12 +8,12 @@
 Summary:	Balsa Mail Client
 Summary(pl):	Balsa - klient poczty
 Name:		balsa
-Version:	2.2.0
+Version:	2.2.2
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
-# Source0-md5:	2bbe9e80fbdfbcf89f31fb7250445f85
+# Source0-md5:	4e76f41f5816f1c677e252313b432fa0
 Patch0:		%{name}-locale-names.patch
 #Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-iconv-in-libc.patch
