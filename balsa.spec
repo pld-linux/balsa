@@ -3,12 +3,12 @@ Summary(pl):	Klient poczty dla GNOME z silnikiem mutt-a
 Summary(es):	Balsa es un lector de e-mail. Usa el toolkit GTK
 Summary(pt_BR):	Balsa é um leitor de e-mail. Usa o toolkit GTK
 Name:		balsa
-Version:	1.2.4
-Release:	2
+Version:	1.3.6
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://www.theochem.kth.se/~pawsa/balsa/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-configure.patch
+Patch0:		%{name}-ac253.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bison
@@ -17,7 +17,7 @@ BuildRequires:	docbook-style-dsssl
 BuildRequires:	flex
 BuildRequires:	freetype-devel >= 2.0.0
 BuildRequires:	gal-devel >= 0.19
-BuildRequires:	gdk-pixbuf-devel
+BuildRequires:	gdk-pixbuf-gnome-devel
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-doc-tools
 BuildRequires:	gnome-libs-devel >= 1.2.1
@@ -65,7 +65,7 @@ Suporta caixas de correio locais, POP3 a IMAP.
 
 %prep
 %setup -q
-%patch0 -p0
+%patch0 -p1
 
 %build
 libtoolize --copy --force
