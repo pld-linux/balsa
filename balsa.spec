@@ -9,13 +9,13 @@ Summary(pl):	Klient poczty dla GNOME z silnikiem mutt-a
 Summary(es):	Balsa es un lector de e-mail. Usa el toolkit GTK
 Summary(pt_BR):	Balsa é um leitor de e-mail. Usa o toolkit GTK
 Name:		balsa
-Version:	2.0.13
+Version:	2.0.14
 #Release:	1.%{snap}
-Release:	2
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
-# Source0-md5:	5482fd4e0a054823f6078e9e979f253e
+# Source0-md5:	91ec11aec9f100e3ad6c02bccae2da5d
 #Source0:	%{name}-%{version}-%{snap}.tar.bz2
 #Patch0:		%{name}-libtool_hack.patch
 Patch1:		%{name}-desktop.patch
