@@ -12,6 +12,7 @@ License:	GPL
 Group:		X11/Applications
 #Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
 Source0:	%{name}-%{version}-%{snap}.tar.bz2
+Patch0:		%{name}-libtool_hack.patch
 URL:		http://balsa.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -43,32 +44,10 @@ Suporta caixas de correio locais, POP3 a IMAP.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-glib-gettextize --copy --force
-intltoolize
-%{__libtoolize}
-%{__aclocal}
-%{__autoheader}
-%{__automake}
-%{__autoconf}
-
-cd ./libmutt
-glib-gettextize --copy --force
-%{__libtoolize}
-%{__aclocal}
-%{__autoheader}
-%{__automake}
-%{__autoconf}
-
-cd ../website
-glib-gettextize --copy --force
-%{__aclocal}
-%{__automake}
-%{__autoconf}
-
-cd ..
-
+NOCONFIGURE=1 ./autogen.sh
 %configure
 
 # TODO find this gdp stylesheet
