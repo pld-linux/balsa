@@ -11,8 +11,6 @@ Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
-#Source0:	%{name}-%{version}-%{snap}.tar.bz2
-#Patch0:		%{name}-libtool_hack.patch
 URL:		http://balsa.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -48,10 +46,8 @@ Suporta caixas de correio locais, POP3 a IMAP.
 
 %prep
 %setup -q
-#%patch0 -p1
 
 %build
-#NOCONFIGURE=1 ./autogen.sh
 %configure
 
 %{__make} 
