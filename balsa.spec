@@ -9,6 +9,7 @@ Source0:	http://www.theochem.kth.se/~pawsa/balsa/%{name}-%{version}.tar.gz
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-libs-devel >= 1.2.0
 BuildRequires:	libPropList-devel
+BuildRequires:	docbook-gnome-sgml
 URL:		http://www.newton.cx/balsa/main.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
