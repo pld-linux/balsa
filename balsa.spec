@@ -24,7 +24,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libesmtp-devel
 BuildRequires:	libgnomeprintui-devel >= 1.106.0
-BuildRequires:	gpgme-devel >= 0.3.14 
+BuildRequires:	gpgme-devel >= 0.3.14
 BuildRequires:	gtk+2-devel >= 2.2.0
 BuildRequires:	libgtkhtml-devel
 BuildRequires:	libgnome-devel
@@ -69,20 +69,20 @@ Suporta caixas de correio locais, POP3 a IMAP.
 	%{!?_without_ldap:--enable-ldap} \
 	%{?_without_ldap:--disable-ldap}
 
-%{__make} 
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT 
+	DESTDIR=$RPM_BUILD_ROOT
 
 %find_lang %{name} --with-gnome --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /usr/bin/scrollkeeper-update 
+%post -p /usr/bin/scrollkeeper-update
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
