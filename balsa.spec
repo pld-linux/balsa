@@ -17,7 +17,8 @@ Patch1:		%{name}-libgnomeprint.patch
 URL:		http://balsa.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
-
+BuildRequires:	libgnomeprintui-devel >= 2.1.5
+BuildRequires:	gtk+2-devel >= 2.1.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
