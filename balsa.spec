@@ -1,46 +1,24 @@
+
+%define		snap	20021218
+
 Summary:	balsa - GNOME e-Mail program
 Summary(pl):	Klient poczty dla GNOME z silnikiem mutt-a
 Summary(es):	Balsa es un lector de e-mail. Usa el toolkit GTK
 Summary(pt_BR):	Balsa é um leitor de e-mail. Usa o toolkit GTK
 Name:		balsa
-Version:	1.3.6
-Release:	1
+Version:	2.0.3
+Release:	0.%{snap}.1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://www.theochem.kth.se/~pawsa/balsa/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-ac253.patch
+#Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
+Source0:	%{name}-%{version}-%{snap}.tar.bz2
+Patch0:		%{name}-aspell.patch
+Patch1:		%{name}-libgnomeprint.patch
+URL:		http://balsa.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	bison
-BuildRequires:	cyrus-sasl-devel
-BuildRequires:	docbook-style-dsssl
-BuildRequires:	flex
-BuildRequires:	freetype-devel >= 2.0.0
-BuildRequires:	gal-devel >= 0.19
-BuildRequires:	gdk-pixbuf-gnome-devel
-BuildRequires:	gettext-devel
-BuildRequires:	gnome-doc-tools
-BuildRequires:	gnome-libs-devel >= 1.2.1
-BuildRequires:	gnome-print-devel >= 0.25.0
-BuildRequires:	gtkhtml-devel >= 0.12.0
-BuildRequires:	libPropList-devel
-BuildRequires:	libesmtp-devel
-BuildRequires:	libltdl-devel
-BuildRequires:	libstdc++-devel
-BuildRequires:	libtool
-BuildRequires:	openjade
-BuildRequires:	openldap-devel
-BuildRequires:	openssl-devel
-BuildRequires:	pam-devel
-BuildRequires:	pcre-devel
-BuildRequires:	pspell-devel >= 12.1
-URL:		http://www.balsa.net/
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
-%define		_sysconfdir	/etc/X11/GNOME
-%define		_localstatedir	/var
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 e-Mail program for the GNOME desktop, supporting local mailboxes, POP3
@@ -66,43 +44,45 @@ Suporta caixas de correio locais, POP3 a IMAP.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
-rm -f {,libmutt/}missing
+glib-gettextize --copy --force
+intltoolize
 %{__libtoolize}
-%{__gettextize}
-%{__aclocal} -I macros
-%{__autoconf}
-%{__automake}
-cd libmutt
 %{__aclocal}
-%{__autoconf}
+%{__autoheader}
 %{__automake}
+%{__autoconf}
+
+cd ./libmutt
+glib-gettextize --copy --force
+%{__libtoolize}
+%{__aclocal}
+%{__autoheader}
+%{__automake}
+%{__autoconf}
+
+cd ../website
+glib-gettextize --copy --force
+%{__aclocal}
+%{__automake}
+%{__autoconf}
+
 cd ..
-%configure \
-	--enable-system-install \
-	--enable-all \
-	--enable-info \
-	--disable-threads \
-	--disable-more-warnings \
-	--with-mailpath=/var/mail \
-	--with-ssl \
-	--enable-pcre \
-	--enable-ldap \
-	--enable-gtkhtml
+
+%configure 
 
 # TODO find this gdp stylesheet
-%{__make} \
-	GDP_STYLESHEET=/usr/share/sgml/docbook/gnome-customization-1.0/gdp-both.dsl
+%{__make} 
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	desktopdir=%{_applnkdir}/Network/Mail
+	DESTDIR=$RPM_BUILD_ROOT 
 
-%find_lang %{name} --with-gnome
+%find_lang %{name} --with-gnome --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -112,7 +92,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/*
 %{_sysconfdir}/sound/events/*
-%{_datadir}/sounds/balsa
-%{_pixmapsdir}/*
-%{_applnkdir}/Network/Mail/*
+%{_datadir}/applications/*
+%{_datadir}/%{name}
+%{_datadir}/sounds/%{name}
 %{_mandir}/man1/*
+%{_omf_dest_dir}/%{name}
+%{_pixmapsdir}/*
