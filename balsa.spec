@@ -10,6 +10,7 @@ Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
 Source0:	http://www.theochem.kth.se/~pawsa/balsa/%{name}-%{version}.tar.gz
+Patch0:		%{name}-am15.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bison
@@ -62,6 +63,7 @@ Suporta caixas de correio locais, POP3 a IMAP.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 libtoolize --copy --force
