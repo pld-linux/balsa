@@ -1,0 +1,10 @@
+--- balsa-1.3.6/configure.in~	Sun May 26 14:57:09 2002
++++ balsa-1.3.6/configure.in	Sun May 26 14:57:09 2002
+@@ -166,7 +166,6 @@
+ AC_SUBST(BALSA_RELEASE)
+ AC_SUBST(BALSA_VERSION)
+ 
+-AC_SUBST(LIBOBJS)
+ AC_SUBST(LIBESD_LIB)
+ 
+ dnl ###########################################################################
