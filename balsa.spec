@@ -1,6 +1,6 @@
 Summary:	balsa - GNOME e-Mail program
 Name:		balsa
-Version:	0.9.2
+Version:	0.9.3
 Release:	1
 License:	GPL
 Group:		X11/GNOME
@@ -41,6 +41,7 @@ gettextize --copy --force
 	--enable-all \
 	--enable-info \
 	--enable-threads \
+	--disable-more-warnings \
 	--with-mailpath=/var/mail
 %{__make}
 
