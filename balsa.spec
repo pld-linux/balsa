@@ -1,24 +1,22 @@
 
-%define		snap	20021218
+%define		snap	20021226
 
 Summary:	balsa - GNOME e-Mail program
 Summary(pl):	Klient poczty dla GNOME z silnikiem mutt-a
 Summary(es):	Balsa es un lector de e-mail. Usa el toolkit GTK
 Summary(pt_BR):	Balsa é um leitor de e-mail. Usa o toolkit GTK
 Name:		balsa
-Version:	2.0.3
+Version:	2.0.4
 Release:	0.%{snap}.1
 License:	GPL
 Group:		X11/Applications
 #Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
 Source0:	%{name}-%{version}-%{snap}.tar.bz2
-Patch0:		%{name}-aspell.patch
-Patch1:		%{name}-libgnomeprint.patch
 URL:		http://balsa.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	libgnomeprintui-devel >= 2.1.5
-BuildRequires:	gtk+2-devel >= 2.1.5
+BuildRequires:	libgnomeprintui-devel >= 1.106.0
+BuildRequires:	gtk+2-devel 
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -44,8 +42,6 @@ Suporta caixas de correio locais, POP3 a IMAP.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 glib-gettextize --copy --force
@@ -72,7 +68,7 @@ glib-gettextize --copy --force
 
 cd ..
 
-%configure 
+%configure
 
 # TODO find this gdp stylesheet
 %{__make} 
@@ -87,6 +83,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post -p /usr/bin/scrollkeeper-update 
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
