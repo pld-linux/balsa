@@ -1,9 +1,9 @@
 #
 # Conditional build:
-%bcond_without	ldap
-%bcond_without	gpgme		# experimental.
-%bcond_without	esmtp
-%bcond_without	gtkhtml
+%bcond_without	ldap		# build without LDAP support
+%bcond_without	gpgme		# build without GPG support (experimental)
+%bcond_without	esmtp		# build without ESMTP support
+%bcond_without	gtkhtml		# build without HTML support
 
 %define		snap	20030630
 
@@ -13,8 +13,7 @@ Summary(es):	Balsa es un lector de e-mail. Usa el toolkit GTK
 Summary(pt_BR):	Balsa é um leitor de e-mail. Usa o toolkit GTK
 Name:		balsa
 Version:	2.0.15
-#Release:	1.%{snap}
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications
 Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
