@@ -1,73 +1,66 @@
-# Note that this is NOT a relocatable package
-%define ver      0.4.9
-%define rel      bero1
-%define prefix   /usr/gnome
+Summary:	balsa - GNOME e-Mail program
+Name:		balsa
+Version:	0.6.0
+Release:	1
+License:	GPL
+Group:		X11/GNOME
+Source:		ftp://ftp.gnome.org/pub/GNOME/sources/%{name}-%{version}.tar.gz
+Source1:	%{name}.desktop
+Patch:		%{name}-locale.patch
+BuildRoot:	/tmp/%{name}-%{version}-root
+URL:		http://www.balsa.net/
 
-Summary: balsa - GNOME e-Mail program
-Name: balsa
-Version: %ver
-Release: %rel
-Copyright: GPL
-Group: X11/GNOME
-Source: ftp://ftp.gnome.org/pub/GNOME/sources/balsa-%{ver}.tar.bz2
-BuildRoot: /var/tmp/balsa-root
-URL: http://www.balsa.net/
-Docdir: %{prefix}/doc
-Requires: gnome-libs >= 0.99.1
+%define		_prefix		/usr/X11R6
+%define		_sysconfdir	/etc/X11/GNOME
+%define		_localstatedir	/var
+%define		_applnkdir	%{_datadir}/applnk
 
 %description
 e-Mail program for the GNOME desktop, supporting local mailboxes, POP3 and
-IMAP.
-
-GNOME is the GNU Network Object Model Environment.  That's a fancy
-name but really GNOME is a nice GUI desktop environment.  It makes
-using your computer easy, powerful, and easy to configure.
-
-%changelog
-* Wed Jan 27 1999 Bernhard Rosenkraenzer <bero@microsoft.sucks.eu.org>
-- initial version
+IMAP.  GNOME is the GNU Network Object Model Environment.  That's a fancy
+name but really GNOME is a nice GUI desktop environment.  It makes using
+your computer easy, powerful, and easy to configure.
 
 %prep
-%setup
-
+%setup -q
+%patch -p1
 %build
-# balsa doesn't like new ORBits...
-cd idl
-orbit-idl balsa.idl
-cd ..
-
-# Needed for snapshot releases.
-if [ ! -f configure ]; then
-  CFLAGS="$RPM_OPT_FLAGS" ./autogen.sh --prefix=%prefix --with-gnome=%prefix \
-	--with-gtk-prefix=/usr
-else
-  CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=%prefix --with-gnome=%prefix \
-	--with-gtk-prefix=/usr
-fi
-
-if [ "$SMP" != "" ]; then
-  (make "MAKE=make -k -j $SMP"; exit 0)
-  make
-else
-  make
-fi
+LDFLAGS="-s"; export LDFLAGS
+autoconf
+%configure \
+	--enable-system-install \
+	--enable-all \
+	--enable-info \
+	--enable-threads
+make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-make prefix=$RPM_BUILD_ROOT%{prefix} install
+install -d 		$RPM_BUILD_ROOT%{_applnkdir}/Networking/Mail
+
+make install		DESTDIR=$RPM_BUILD_ROOT
+
+install %{SOURCE1}	$RPM_BUILD_ROOT%{_applnkdir}/Networking/Mail
+
+gzip -9nf AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
+
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
-%defattr(-, root, root)
-
-%doc AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
-%{prefix}/bin/*
-%{prefix}/lib/*
-%{prefix}/etc/CORBA/servers/*
-%{prefix}/etc/sound/events/*
-%{prefix}/share/locale/*/*/*
-%{prefix}/share/sounds/*
-%{prefix}/share/pixmaps/*
+%files -f %{name}.lang
+%defattr(644,root,root,755)
+%doc {AUTHORS,COPYING,ChangeLog,INSTALL,NEWS,README,TODO}.gz
+%attr(755,root,root) %{_bindir}/*
+%dir %{_datadir}/sounds/balsa
+%dir %{_datadir}/pixmaps/balsa
+%dir %{_datadir}/gnome/help/balsa
+%{_sysconfdir}/CORBA/servers/*
+%{_sysconfdir}/sound/events/*
+%{_datadir}/sounds/balsa/*
+%{_datadir}/pixmaps/balsa/*
+%{_datadir}/idl/*
+%{_datadir}/gnome/help/balsa/*
+%{_applnkdir}/Networking/Mail/*
