@@ -68,7 +68,7 @@ Suporta caixas de correio locais, POP3 a IMAP.
 %patch0 -p1
 
 %build
-libtoolize --copy --force
+%{__libtoolize}
 gettextize --copy --force
 aclocal -I macros
 %{__autoconf}
