@@ -1,10 +1,11 @@
 Summary:	balsa - GNOME e-Mail program
 Name:		balsa
 Version:	0.9.3
-Release:	1
+Release:	2
 License:	GPL
-Group:		X11/GNOME
-Group(pl):	X11/GNOME
+Group:		X11/Applications
+Group(de):	X11/Applikationen
+Group(pl):	X11/Aplikacje
 Source0:	http://www.theochem.kth.se/~pawsa/balsa/%{name}-%{version}.tar.gz
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-libs-devel >= 1.2.0
@@ -35,7 +36,6 @@ potê¿niejszy i ³atwo go skonfigurowaæ.
 %setup -q
 
 %build
-LDFLAGS="-s"; export LDFLAGS
 gettextize --copy --force 
 %configure \
 	--enable-system-install \
@@ -43,7 +43,8 @@ gettextize --copy --force
 	--enable-info \
 	--enable-threads \
 	--disable-more-warnings \
-	--with-mailpath=/var/mail
+	--with-mailpath=/var/mail \
+	--enable-ldap
 %{__make}
 
 %install
@@ -53,8 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	desktopdir=%{_applnkdir}/Network/Mail
 
-gzip -9nf AUTHORS ChangeLog NEWS README TODO \
-	$RPM_BUILD_ROOT%{_mandir}/man1/*
+gzip -9nf AUTHORS ChangeLog NEWS README TODO
 
 %find_lang %{name} --with-gnome
 
