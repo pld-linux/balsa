@@ -16,6 +16,7 @@ License:	GPL
 Group:		X11/Applications
 #Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
 Source0:	%{name}-%{version}-%{snap}.tar.bz2
+# Source0-md5: 75d91e8c0b3fa10bc8b0d63eb7d29c2c
 Patch0:		%{name}-libtool_hack.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-message-tree-patch-2003-05-22.gz
