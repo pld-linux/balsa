@@ -69,7 +69,7 @@ Suporta caixas de correio locais, POP3 a IMAP.
 
 %build
 libtoolize --copy --force
-gettextize --copy --force 
+gettextize --copy --force
 aclocal -I macros
 autoconf
 rm -f missing
