@@ -4,7 +4,7 @@ Summary(es):	Balsa es un lector de e-mail. Usa el toolkit GTK
 Summary(pt_BR):	Balsa é um leitor de e-mail. Usa o toolkit GTK
 Name:		balsa
 Version:	1.1.7
-Release:	3
+Release:	4
 License:	GPL
 Group:		X11/Applications
 Group(de):	X11/Applikationen
@@ -19,7 +19,7 @@ BuildRequires:	gdk-pixbuf-devel
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-libs-devel >= 1.2.0
 BuildRequires:	gnome-print-devel
-BuildRequires:	gtkhtml-devel >= 0.10.1
+BuildRequires:	gtkhtml-devel >= 0.12.0
 BuildRequires:	flex
 BuildRequires:	libesmtp-devel
 BuildRequires:	libltdl-devel
