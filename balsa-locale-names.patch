@@ -1,11 +1,11 @@
---- balsa-2.0.17/configure.in.orig	Sun Mar 28 23:41:56 2004
-+++ balsa-2.0.17/configure.in	Fri May  7 13:27:24 2004
-@@ -148,7 +148,7 @@
+--- balsa-2.2.6/configure.in	2004-11-19 22:23:40.000000000 +0000
++++ balsa-2.2.6.new/configure.in	2004-11-23 14:37:25.218470688 +0000
+@@ -173,7 +173,7 @@
  dnl All the linguas, all the time.
  dnl ###########################################################################
  
--ALL_LINGUAS="am az bg ca cs da de en_CA en_GB el es et fi fr ga he hi hr hu it ja ko lt lv ml ms nl no nn pl pt pt_BR ro ru sk sl sq sr sr@Latn sv tr uk vi wa zh_CN zh_TW"
-+ALL_LINGUAS="am az bg ca cs da de en_CA en_GB el es et fi fr ga he hi hr hu it ja ko lt lv ml ms nl nb nn pl pt pt_BR ro ru sk sl sq sr sr@Latn sv tr uk vi wa zh_CN zh_TW"
+-ALL_LINGUAS="am az bg ca cs da de en_CA en_GB el es et fi fr ga he hi hr hu it ja ko lt lv ml ms nl no nn pa pl pt pt_BR ro ru sk sl sq sr sr@Latn sv tr uk vi wa zh_CN zh_TW"
++ALL_LINGUAS="am az bg ca cs da de en_CA en_GB el es et fi fr ga he hi hr hu it ja ko lt lv ml ms nl nb nn pa pl pt pt_BR ro ru sk sl sq sr sr@Latn sv tr uk vi wa zh_CN zh_TW"
  GETTEXT_PACKAGE=balsa
  AC_SUBST(GETTEXT_PACKAGE)
  AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE",
