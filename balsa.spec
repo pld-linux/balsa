@@ -1,8 +1,8 @@
 Summary:	balsa - GNOME e-Mail program
 Summary(pl):	Klient poczty dla GNOME z silnikiem mutt-a
 Name:		balsa
-Version:	1.1.4
-Release:	4
+Version:	1.1.7
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Group(de):	X11/Applikationen
@@ -19,6 +19,7 @@ BuildRequires:	gnome-libs-devel >= 1.2.0
 BuildRequires:	gnome-print-devel
 BuildRequires:	gtkhtml-devel >= 0.9.2
 BuildRequires:	flex
+BuildRequires:	libesmtp-devel
 BuildRequires:	libltdl-devel
 BuildRequires:	libPropList-devel
 BuildRequires:	libstdc++-devel
@@ -58,6 +59,10 @@ aclocal -I macros
 autoconf
 rm -f missing
 automake -a -c
+(cd libmutt
+aclocal
+autoconf
+automake -a -c)
 %configure \
 	--enable-system-install \
 	--enable-all \
