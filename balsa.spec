@@ -12,7 +12,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	docbook-style-dsssl
-BuildRequires:	docbook-gnome-dtd10-sgml
+BuildRequires:	gnome-doc-tools
 BuildRequires:	gdk-pixbuf-devel
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-libs-devel >= 1.2.0
@@ -65,8 +65,10 @@ automake -a -c
 	--with-ssl \
 	--enable-ldap \
 	--enable-gtkhtml
+
+# TODO find this gdp stylesheet
 %{__make} \
-	GDP_STYLESHEET=/usr/share/sgml/docbook/gnome-customization-1.0/docbook-gnome-3.1.dtd
+	GDP_STYLESHEET=/usr/share/sgml/docbook/gnome-customization-1.0/gdp-both.dsl
 
 %install
 rm -rf $RPM_BUILD_ROOT
