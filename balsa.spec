@@ -14,7 +14,7 @@ Release:	1.%{snap}
 #Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
+#Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
 Source0:	%{name}-%{version}-%{snap}.tar.bz2
 Patch0:		%{name}-libtool_hack.patch
 Patch1:		%{name}-desktop.patch
