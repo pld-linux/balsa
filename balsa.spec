@@ -28,7 +28,7 @@ BuildRequires:	openjade
 BuildRequires:	openldap-devel
 BuildRequires:	openssl-devel
 BuildRequires:	pspell-devel >= 12.1
-BuildRequires:  gal-devel
+BuildRequires:	gal-devel
 URL:		http://www.newton.cx/balsa/main.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
