@@ -9,8 +9,8 @@ Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
 Source0:	http://www.theochem.kth.se/~pawsa/balsa/%{name}-%{version}.tar.gz
 BuildRequires:	bison
-BuildRequires:	docbook-dsssl
-BuildRequires:	docbook-gnome-sgml
+BuildRequires:	docbook-style-dsssl
+BuildRequires:	docbook-gnome-dtd10-sgml
 BuildRequires:	gdk-pixbuf-devel
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-libs-devel >= 1.2.0
