@@ -15,6 +15,7 @@ BuildRequires:	bison
 BuildRequires:	cyrus-sasl-devel
 BuildRequires:	docbook-style-dsssl
 BuildRequires:	flex
+BuildRequires:	freetype-devel >= 2.0.0
 BuildRequires:	gal-devel >= 0.19
 BuildRequires:	gdk-pixbuf-devel
 BuildRequires:	gettext-devel
@@ -22,18 +23,17 @@ BuildRequires:	gnome-doc-tools
 BuildRequires:	gnome-libs-devel >= 1.2.1
 BuildRequires:	gnome-print-devel >= 0.25.0
 BuildRequires:	gtkhtml-devel >= 0.12.0
+BuildRequires:	libPropList-devel
 BuildRequires:	libesmtp-devel
 BuildRequires:	libltdl-devel
-BuildRequires:	libPropList-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
 BuildRequires:	openjade
 BuildRequires:	openldap-devel
 BuildRequires:	openssl-devel
-BuildRequires:	pcre-devel
 BuildRequires:	pam-devel
+BuildRequires:	pcre-devel
 BuildRequires:	pspell-devel >= 12.1
-BuildRequires:	freetype-devel
 URL:		http://www.balsa.net/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
