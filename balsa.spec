@@ -10,13 +10,12 @@ BuildRequires:	gettext-devel
 BuildRequires:	gnome-libs-devel
 BuildRequires:	libPropList-devel
 URL:		http://www.balsa.net/
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
 %define		_sysconfdir	/etc/X11/GNOME
 %define		_localstatedir	/var
-%define		_applnkdir	%{_datadir}/applnk
 
 %description
 e-Mail program for the GNOME desktop, supporting local mailboxes, POP3 and
