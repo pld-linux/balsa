@@ -1,9 +1,9 @@
 #
 # Conditional build:
-# --without ldap
-# --without gpgme		# experimental.
-# --without esmtp
-# --without gtkhtml
+%bcond_without	ldap
+%bcond_without	gpgme		# experimental.
+%bcond_without	esmtp
+%bcond_without	gtkhtml
 
 %define		snap	20030630
 
@@ -25,15 +25,15 @@ Patch1:		%{name}-desktop.patch
 URL:		http://balsa.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
-%{!?_without_esmtp:BuildRequires:	libesmtp-devel}
+%{?with_esmtp:BuildRequires:	libesmtp-devel}
 BuildRequires:	libgnomeprintui-devel >= 1.106.0
-%{!?_without_gpgme:BuildRequires:	gpgme-devel >= 0.3.14}
+%{?with_gpgme:BuildRequires:	gpgme-devel >= 0.3.14}
 BuildRequires:	gtk+2-devel >= 2.2.0
-%{!?_without_gtkhtml:BuildRequires:	libgtkhtml-devel}
+%{?with_gtkhtml:BuildRequires:	libgtkhtml-devel}
 BuildRequires:	libltdl-devel
 BuildRequires:	libgnome-devel
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
-%{!?_without_ldap:BuildRequires:	openldap-devel}
+%{?with_ldap:BuildRequires:	openldap-devel}
 BuildRequires:	aspell-devel >= 0.50
 BuildRequires:	xft-devel
 Requires:	gpgme >= 0.3.14
@@ -67,14 +67,15 @@ Suporta caixas de correio locais, POP3 a IMAP.
 
 %build
 #./autogen.sh
+cp -f /usr/share/automake/config.* .
 %configure \
 	--with-ssl \
-	%{?_without_esmtp:--without-esmtp} \
-	%{!?_without_gtkhtml:--enable-gtkhtml} \
-	%{?_without_gtkhtml:--disable-gtkhtml}\
-	%{?_without_gpgme:--without-gpgme} \
-	%{!?_without_ldap:--with-ldap} \
-	%{?_without_ldap:--without-ldap}
+	%{!?with_esmtp:--without-esmtp} \
+	%{?with_gtkhtml:--enable-gtkhtml} \
+	%{!?with_gtkhtml:--disable-gtkhtml}\
+	%{!?with_gpgme:--without-gpgme} \
+	%{?with_ldap:--with-ldap} \
+	%{!?with_ldap:--without-ldap}
 
 %{__make}
 
