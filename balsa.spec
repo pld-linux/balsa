@@ -55,7 +55,7 @@ cajas de correo electrónico locales, POP3 y IMAP.
 %description -l pl
 Balsa to klient e-mail dla ¶rodowiska GNOME. Obs³uguje POP3, IMAP oraz
 lokalne skrzynki pocztowe. GNOME to Network Object Model Environment.
-Mimo osobliwej nazwy jest to naparwdê estetyczne ¶rodowisko graficzne.
+Mimo osobliwej nazwy jest to naprawdê estetyczne ¶rodowisko graficzne.
 Dziêki niemu u¿ywanie komputera jest ³atwiejsze; system jest
 potê¿niejszy i ³atwo go skonfigurowaæ.
 
