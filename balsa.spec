@@ -1,11 +1,11 @@
 Summary:	balsa - GNOME e-Mail program
 Name:		balsa
-Version:	0.8.1
+Version:	0.9.0
 Release:	1
 License:	GPL
 Group:		X11/GNOME
 Group(pl):	X11/GNOME
-Source0:	ftp://ftp.newton.cx/pub/balsa/%{name}-%{version}.tar.gz
+Source0:	http://www.theochem.kth.se/~pawsa/balsa/%{name}-%{version}.tar.gz
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-libs-devel
 BuildRequires:	libPropList-devel
@@ -62,7 +62,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc *.gz
 %attr(755,root,root) %{_bindir}/*
-%{_sysconfdir}/CORBA/servers/*
 %{_sysconfdir}/sound/events/*
 %{_datadir}/sounds/balsa
 %{_datadir}/pixmaps/*
