@@ -11,7 +11,7 @@ Summary(pt_BR):	Balsa é um leitor de e-mail. Usa o toolkit GTK
 Name:		balsa
 Version:	2.0.14
 #Release:	1.%{snap}
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
@@ -66,8 +66,8 @@ Suporta caixas de correio locais, POP3 a IMAP.
 %configure \
 	--with-ssl \
 	--with-gpgme \
-	%{!?_without_ldap:--enable-ldap} \
-	%{?_without_ldap:--disable-ldap}
+	%{!?_without_ldap:--with-ldap} \
+	%{?_without_ldap:--without-ldap}
 
 %{__make}
 
