@@ -13,6 +13,7 @@ URL:		http://www.balsa.net/
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %define		_prefix		/usr/X11R6
+%define		_mandir		%{_prefix}/man
 %define		_sysconfdir	/etc/X11/GNOME
 %define		_localstatedir	/var
 %define		_applnkdir	%{_datadir}/applnk
@@ -46,7 +47,8 @@ make install DESTDIR=$RPM_BUILD_ROOT
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Networking/Mail
 
-gzip -9nf AUTHORS ChangeLog NEWS README TODO
+gzip -9nf AUTHORS ChangeLog NEWS README TODO \
+	$RPM_BUILD_ROOT%{_mandir}/man1/*
 
 %find_lang %{name}
 
@@ -63,3 +65,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/pixmaps/balsa
 %{_datadir}/gnome/help/balsa
 %{_applnkdir}/Networking/Mail/*
+%{_mandir}/man1/*
