@@ -26,7 +26,7 @@ BuildRequires:	automake
 %{?with_esmtp:BuildRequires:	libesmtp-devel}
 BuildRequires:	libgnomeprintui-devel >= 1.106.0
 BuildRequires:	gmime-devel >= 2.1.9
-%{?with_gpgme:BuildRequires:	gpgme-devel >= 1:0.4.3}
+%{?with_gpgme:BuildRequires:	gpgme-devel >= 1:0.9.0}
 BuildRequires:	gtk+2-devel >= 2:2.2.0
 BuildRequires:	intltool
 %{?with_gtkhtml:BuildRequires:	libgtkhtml-devel >= 2.0}
@@ -38,7 +38,7 @@ BuildRequires:	libtool
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pcre-devel >= 3.0
 BuildRequires:	scrollkeeper >= 0.1.4
-%{?with_gpgme:Requires:	gpgme >= 0.9.0}
+%{?with_gpgme:Requires:	gpgme >= 1:0.9.0}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
