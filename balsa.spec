@@ -23,7 +23,7 @@ BuildRequires:	gnome-libs-devel >= 1.2.1
 BuildRequires:	gnome-print-devel >= 0.25.0
 BuildRequires:	gtkhtml-devel >= 0.12.0
 BuildRequires:	libPropList-devel
-BuildRequires:	libesmtp-devel
+BuildRequires:	libesmtp-devel >= 1.0
 BuildRequires:	libltdl-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
@@ -66,16 +66,17 @@ Suporta caixas de correio locais, POP3 a IMAP.
 %setup -q
 
 %build
+rm -f missing
+cd libmutt
+	aclocal
+	%{__autoconf}
+	automake -a -c
+cd ..
 libtoolize --copy --force
 gettextize --copy --force
 aclocal -I macros
 %{__autoconf}
-rm -f missing
 %{__automake}
-(cd libmutt
-aclocal
-%{__autoconf}
-automake -a -c)
 %configure \
 	--enable-system-install \
 	--enable-all \
@@ -84,6 +85,7 @@ automake -a -c)
 	--disable-more-warnings \
 	--with-mailpath=/var/mail \
 	--with-ssl \
+	--with-esmtp \
 	--enable-pcre \
 	--enable-ldap \
 	--enable-gtkhtml
