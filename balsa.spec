@@ -30,6 +30,7 @@ BuildRequires:	libtool
 BuildRequires:	openjade
 BuildRequires:	openldap-devel
 BuildRequires:	openssl-devel
+BuildRequires:	pcre-devel
 BuildRequires:	pspell-devel >= 12.1
 BuildRequires:	gal-devel >= 0.9
 URL:		http://www.newton.cx/balsa/main.html
@@ -84,6 +85,7 @@ automake -a -c)
 	--disable-more-warnings \
 	--with-mailpath=/var/mail \
 	--with-ssl \
+	--enable-pcre \
 	--enable-ldap \
 	--enable-gtkhtml
 
