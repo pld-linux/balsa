@@ -22,6 +22,7 @@ BuildRequires:	flex
 BuildRequires:	libltdl-devel
 BuildRequires:	libPropList-devel
 BuildRequires:	libstdc++-devel
+BuildRequires:	libtool
 BuildRequires:	openjade
 BuildRequires:	openldap-devel
 BuildRequires:	openssl-devel
@@ -51,6 +52,7 @@ potê¿niejszy i ³atwo go skonfigurowaæ.
 %setup -q
 
 %build
+libtoolize --copy --force
 gettextize --copy --force 
 aclocal -I macros
 autoconf
