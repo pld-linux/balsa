@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_without	ldap		# build without LDAP support
-%bcond_without	gpgme		# build without GPG support (experimental)
+%bcond_with	gpgme		# build with GPG support (experimental)
 %bcond_without	esmtp		# build without ESMTP support
 %bcond_without	gtkhtml		# build without HTML support
 #
@@ -11,7 +11,7 @@ Summary(es):	Balsa es un lector de e-mail. Usa el toolkit GTK
 Summary(pt_BR):	Balsa é um leitor de e-mail. Usa o toolkit GTK
 Name:		balsa
 Version:	2.0.17
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications
 Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
@@ -39,7 +39,7 @@ BuildRequires:	libtool
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pcre-devel >= 3.0
 BuildRequires:	scrollkeeper >= 0.1.4
-Requires:	gpgme >= 0.4.3
+%{?with_gpgme:Requires:	gpgme >= 0.4.3}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
