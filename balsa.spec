@@ -108,9 +108,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/*
 %{_sysconfdir}/sound/events/*
-%{_datadir}/applications/*
 %{_datadir}/%{name}
 %{_datadir}/sounds/%{name}
 %{_mandir}/man1/*
 %{_omf_dest_dir}/%{name}
+%{_desktopdir}/*
 %{_pixmapsdir}/*
