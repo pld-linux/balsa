@@ -41,7 +41,7 @@ gettextize --copy --force
 	--enable-all \
 	--enable-info \
 	--enable-threads
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
