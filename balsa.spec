@@ -2,7 +2,7 @@
 # Conditional build:
 # --without ldap
 
-%define		snap	20030505
+%define		snap	20030522
 
 Summary:	balsa - GNOME e-Mail program
 Summary(pl):	Klient poczty dla GNOME z silnikiem mutt-a
@@ -10,14 +10,16 @@ Summary(es):	Balsa es un lector de e-mail. Usa el toolkit GTK
 Summary(pt_BR):	Balsa é um leitor de e-mail. Usa o toolkit GTK
 Name:		balsa
 Version:	2.0.11
-#Release:	1.%{snap}
-Release:	1
+Release:	1.%{snap}
+#Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
-#Source0:	%{name}-%{version}-%{snap}.tar.bz2
-#Patch0:		%{name}-libtool_hack.patch
+Source0:	%{name}-%{version}-%{snap}.tar.bz2
+Patch0:		%{name}-libtool_hack.patch
 Patch1:		%{name}-desktop.patch
+Patch2:		%{name}-message-tree-patch-2003-05-22.gz
+Patch3:		%{name}-gcc33.patch
 URL:		http://balsa.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -57,8 +59,10 @@ Suporta caixas de correio locais, POP3 a IMAP.
 
 %prep
 %setup -q
-#%patch0 -p1
+%patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3	-p1
 
 %build
 #%glib-gettextize --copy --force
@@ -76,14 +80,14 @@ Suporta caixas de correio locais, POP3 a IMAP.
 #%%{__automake}
 #%%{__autoconf}
 #%cd ..
-#./autogen.sh
+./autogen.sh
 %configure \
 	--with-ssl \
 	--with-gpgme \
 	%{!?_without_ldap:--enable-ldap} \
 	%{?_without_ldap:--disable-ldap}
 
-%{__make} 
+%{__make} CFLAGS="%{rpmcflags} -fno-strict-aliasing"
 
 %install
 rm -rf $RPM_BUILD_ROOT
