@@ -1,5 +1,5 @@
 Summary:	balsa - GNOME e-Mail program
-Summary(pl):	Klient poczty dla GNOME z silnikiem mutt-a.
+Summary(pl):	Klient poczty dla GNOME z silnikiem mutt-a
 Name:		balsa
 Version:	1.0.0
 Release:	1
@@ -8,26 +8,22 @@ Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
 Source0:	http://www.theochem.kth.se/~pawsa/balsa/%{name}-%{version}.tar.gz
+BuildRequires:	bison
+BuildRequires:	docbook-dsssl
+BuildRequires:	docbook-gnome-sgml
+BuildRequires:	gdk-pixbuf-devel
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-libs-devel >= 1.2.0
-BuildRequires:	libPropList-devel
+BuildRequires:	gnome-print-devel
 BuildRequires:	gtkhtml-devel
+BuildRequires:	flex
+BuildRequires:	libltdl-devel
+BuildRequires:	libPropList-devel
+BuildRequires:	libstdc++-devel
+BuildRequires:	openjade
 BuildRequires:	openldap-devel
 BuildRequires:	pspell-devel
-BuildRequires:	flex
-BuildRequires:	bison
-BuildRequires:	ORBit-devel
-BuildRequires:	glib-devel
-BuildRequires:	gtk+-devel
-BuildRequires:	gnome-print-devel
-BuildRequires:	gdk-pixbuf-devel
-BuildRequires:	libxml-devel
-BuildRequires:	libstdc++-devel
-BuildRequires:	db3-devel >= 3.1.17-3
-BuildRequires:	openjade
-BuildRequires:  docbook-gnome-sgml
-BuildRequires:	docbook-dsssl
-URL:		http://www.balsa.net/
+URL:		http://www.newton.cx/balsa/main.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -84,7 +80,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_sysconfdir}/sound/events/*
 %{_datadir}/sounds/balsa
-%{_datadir}/pixmaps/*.*
-%{_datadir}/pixmaps/balsa
+%{_datadir}/pixmaps/*
 %{_applnkdir}/Network/Mail/*
-%{_mandir}/man*/*
+%{_mandir}/man1/*
