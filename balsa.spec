@@ -65,6 +65,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/CORBA/servers/*
 %{_sysconfdir}/sound/events/*
 %{_datadir}/sounds/balsa
-%{_datadir}/pixmaps/balsa
+%{_datadir}/pixmaps/*
 %{_applnkdir}/Networking/Mail/*
 %{_mandir}/man1/*
