@@ -1,7 +1,8 @@
 Summary:	balsa - GNOME e-Mail program
+Summary(pl):	Klient poczty dla GNOME z silnikiem mutt-a.
 Name:		balsa
-Version:	0.9.3
-Release:	2
+Version:	1.0.0
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Group(de):	X11/Applikationen
@@ -10,8 +11,23 @@ Source0:	http://www.theochem.kth.se/~pawsa/balsa/%{name}-%{version}.tar.gz
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-libs-devel >= 1.2.0
 BuildRequires:	libPropList-devel
-BuildRequires:	docbook-gnome-sgml
-URL:		http://www.newton.cx/balsa/main.html
+BuildRequires:	gtkhtml-devel
+BuildRequires:	openldap-devel
+BuildRequires:	pspell-devel
+BuildRequires:	flex
+BuildRequires:	bison
+BuildRequires:	ORBit-devel
+BuildRequires:	glib-devel
+BuildRequires:	gtk+-devel
+BuildRequires:	gnome-print-devel
+BuildRequires:	gdk-pixbuf-devel
+BuildRequires:	libxml-devel
+BuildRequires:	libstdc++-devel
+BuildRequires:	db3-devel >= 3.1.17-3
+BuildRequires:	openjade
+BuildRequires:  docbook-gnome-sgml
+BuildRequires:	docbook-dsssl
+URL:		http://www.balsa.net/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -44,7 +60,8 @@ gettextize --copy --force
 	--enable-threads \
 	--disable-more-warnings \
 	--with-mailpath=/var/mail \
-	--enable-ldap
+	--enable-ldap \
+	--enable-gtkhtml
 %{__make}
 
 %install
@@ -67,6 +84,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_sysconfdir}/sound/events/*
 %{_datadir}/sounds/balsa
-%{_datadir}/pixmaps/*
+%{_datadir}/pixmaps/*.*
+%{_datadir}/pixmaps/balsa
 %{_applnkdir}/Network/Mail/*
-%{_mandir}/man1/*
+%{_mandir}/man*/*
