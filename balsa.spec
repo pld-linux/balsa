@@ -1,5 +1,7 @@
 Summary:	balsa - GNOME e-Mail program
 Summary(pl):	Klient poczty dla GNOME z silnikiem mutt-a
+Summary(es):	Balsa es un lector de e-mail. Usa el toolkit GTK
+Summary(pt_BR):	Balsa é um leitor de e-mail. Usa o toolkit GTK
 Name:		balsa
 Version:	1.1.7
 Release:	3
@@ -43,12 +45,20 @@ and IMAP. GNOME is the GNU Network Object Model Environment. That's a
 fancy name but really GNOME is a nice GUI desktop environment. It
 makes using your computer easy, powerful, and easy to configure.
 
+%description -l es
+Balsa es un lector de e-mail. Es parte del entorno GNOME. Soporta
+cajas de correo electrónico locales, POP3 y IMAP.
+
 %description -l pl
 Balsa to klient e-mail dla ¶rodowiska GNOME. Obs³uguje POP3, IMAP oraz
 lokalne skrzynki pocztowe. GNOME to Network Object Model Environment.
 Mimo osobliwej nazwy jest to naparwdê estetyczne ¶rodowisko graficzne.
 Dziêki niemu u¿ywanie komputera jest ³atwiejsze; system jest
 potê¿niejszy i ³atwo go skonfigurowaæ.
+
+%description -l pt_BR
+Balsa é um leitor de e-mail, parte do ambiente de desktop GNOME.
+Suporta caixas de correio locais, POP3 a IMAP.
 
 %prep
 %setup -q
