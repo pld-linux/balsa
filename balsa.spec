@@ -11,7 +11,7 @@ Summary(pt_BR):	Balsa é um leitor de e-mail. Usa o toolkit GTK
 Name:		balsa
 Version:	2.0.13
 #Release:	1.%{snap}
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
@@ -28,7 +28,7 @@ BuildRequires:	gpgme-devel >= 0.3.14
 BuildRequires:	gtk+2-devel >= 2.2.0
 BuildRequires:  libgtkhtml-devel
 BuildRequires:  libgnome-devel
-BuildRequires:  libgnomeui-devel
+BuildRequires:  libgnomeui-devel >= 2.3.3.1-2
 %{!?_without_ldap:BuildRequires:	openldap-devel}
 BuildRequires:  aspell-devel >= 0.50
 BuildRequires:	xft-devel
