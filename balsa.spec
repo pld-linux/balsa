@@ -1,16 +1,15 @@
 Summary:	balsa - GNOME e-Mail program
 Name:		balsa
-Version:	0.6.0
+Version:	0.8.0
 Release:	1
 License:	GPL
 Group:		X11/GNOME
 Group(pl):	X11/GNOME
-Source0:	ftp://ftp.balsa.net/pub/balsa/%{name}-%{version}.tar.gz
-Source1:	%{name}.desktop
+Source0:	ftp://ftp.newton.cx/pub/balsa/%{name}-%{version}.tar.gz
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-libs-devel
 BuildRequires:	libPropList-devel
-URL:		http://www.balsa.net/
+URL:		http://www.newton.cx/balsa/main.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -36,7 +35,6 @@ potê¿niejszy i ³atwo go skonfigurowaæ.
 
 %build
 LDFLAGS="-s"; export LDFLAGS
-autoconf
 gettextize --copy --force 
 %configure \
 	--enable-system-install \
@@ -48,16 +46,14 @@ make
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT%{_applnkdir}/Networking/Mail
-
-make install DESTDIR=$RPM_BUILD_ROOT
-
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Networking/Mail
+make install \
+	DESTDIR=$RPM_BUILD_ROOT \
+	desktopdir=%{_applnkdir}/Networking/Mail
 
 gzip -9nf AUTHORS ChangeLog NEWS README TODO \
 	$RPM_BUILD_ROOT%{_mandir}/man1/*
 
-%find_lang %{name}
+%find_lang %{name} --with-gnome
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -70,6 +66,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/sound/events/*
 %{_datadir}/sounds/balsa
 %{_datadir}/pixmaps/balsa
-%{_datadir}/gnome/help/balsa
 %{_applnkdir}/Networking/Mail/*
 %{_mandir}/man1/*
