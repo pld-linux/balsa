@@ -11,13 +11,13 @@ Summary(pl):	Balsa - klient poczty
 Summary(pt_BR):	Balsa é um leitor de e-mail
 Name:		balsa
 Version:	2.3.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
 # Source0-md5:	ab4d6febaca56d72d13acef819da193b
 Patch0:		%{name}-locale-names.patch
-#Patch1:		%{name}-desktop.patch
+Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-includes.patch
 URL:		http://balsa.gnome.org/
 BuildRequires:	aspell-devel >= 2:0.50
@@ -41,10 +41,7 @@ BuildRequires:	pcre-devel >= 3.0
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper >= 0.1.4
 %{?with_gpgme:Requires:	gpgme >= 1:0.9.0}
-Requires(post):	scrollkeeper
-Requires(post):	desktop-file-utils
-Requires(postun):	scrollkeeper
-Requires(postun):	desktop-file-utils
+Requires(post,postun):	scrollkeeper
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -67,7 +64,7 @@ Suporta caixas de correio locais, POP3 a IMAP.
 %prep
 %setup -q
 %patch0 -p1
-#%%patch1 -p1
+%%patch1 -p1
 %patch2 -p1
 
 rm -f po/no.{po,gmo}
@@ -86,7 +83,6 @@ rm -f po/no.{po,gmo}
 	%{!?with_gtkhtml:--disable-gtkhtml}\
 	%{?with_gpgme:--with-gpgme} \
 	%{?with_ldap:--with-ldap}
-
 %{__make}
 
 %install
@@ -101,11 +97,9 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%update_desktop_database_post
 %scrollkeeper_update_post
 
 %postun
-%update_desktop_database_postun
 %scrollkeeper_update_postun
 
 %files -f %{name}.lang
