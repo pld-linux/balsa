@@ -95,7 +95,13 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /usr/bin/scrollkeeper-update
+%post
+%update_desktop_database_post
+%scrollkeeper_update_post
+
+%postun
+%update_desktop_database_postun
+%scrollkeeper_update_postun
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
