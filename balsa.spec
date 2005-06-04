@@ -38,8 +38,13 @@ BuildRequires:	libtool
 %{?with_ldap:BuildRequires:	openldap-devel}
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pcre-devel >= 3.0
+BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper >= 0.1.4
 %{?with_gpgme:Requires:	gpgme >= 1:0.9.0}
+Requires(post):	scrollkeeper
+Requires(post):	desktop-file-utils
+Requires(postun):	scrollkeeper
+Requires(postun):	desktop-file-utils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -116,3 +121,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_omf_dest_dir}/%{name}
 %{_desktopdir}/*
 %{_pixmapsdir}/*
+%{_iconsdir}/hicolor/48x48/mimetypes/*.png
