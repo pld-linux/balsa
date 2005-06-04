@@ -10,21 +10,22 @@ Summary(es):	Balsa es un lector de e-mail
 Summary(pl):	Balsa - klient poczty
 Summary(pt_BR):	Balsa é um leitor de e-mail
 Name:		balsa
-Version:	2.2.6
-Release:	3
+Version:	2.3.2
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
-# Source0-md5:	6179fadbfc5cca642dac081519acef25
+# Source0-md5:	ab4d6febaca56d72d13acef819da193b
 Patch0:		%{name}-locale-names.patch
 #Patch1:		%{name}-desktop.patch
-Patch2:		%{name}-iconv-in-libc.patch
+Patch2:		%{name}-includes.patch
 URL:		http://balsa.gnome.org/
 BuildRequires:	aspell-devel >= 2:0.50
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 %{?with_esmtp:BuildRequires:	libesmtp-devel}
 BuildRequires:	libgnomeprintui-devel >= 1.106.0
+BuildRequires:	glib2-devel >= 2.6.4-1
 BuildRequires:	gmime-devel >= 2.1.9
 %{?with_gpgme:BuildRequires:	gpgme-devel >= 1:0.9.0}
 BuildRequires:	gtk+2-devel >= 2:2.2.0
@@ -61,13 +62,14 @@ Suporta caixas de correio locais, POP3 a IMAP.
 %prep
 %setup -q
 %patch0 -p1
-#%patch1 -p1
+#%%patch1 -p1
 %patch2 -p1
 
-mv -f po/{no,nb}.po
+rm -f po/no.{po,gmo}
 
 %build
-intltoolize --copy --force
+%{__intltoolize}
+%{__glib_gettextize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
