@@ -1,0 +1,10 @@
+--- balsa-2.3.2/libbalsa/address-book-ldap.c.orig	2005-04-03 00:45:26.000000000 +0200
++++ balsa-2.3.2/libbalsa/address-book-ldap.c	2005-06-04 12:14:30.000000000 +0200
+@@ -26,6 +26,7 @@
+  * ldap caching deleted since it is deprecated in openldap-2.1.x series.
+  */
+ #include "config.h"
++#include "i18n.h"
+ 
+ #if ENABLE_LDAP
+ 
