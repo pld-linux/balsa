@@ -19,10 +19,13 @@ Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-locale-names.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-includes.patch
+Patch3:		%{name}-no_hooks.patch
 URL:		http://balsa.gnome.org/
+BuildRequires:	ORBit2-devel >= 1:2.12.4
 BuildRequires:	aspell-devel >= 2:0.50
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
+BuildRequires:	heimdal-devel
 %{?with_esmtp:BuildRequires:	libesmtp-devel}
 BuildRequires:	libgnomeprintui-devel >= 1.106.0
 BuildRequires:	glib2-devel >= 2.6.4-1
@@ -66,6 +69,7 @@ Suporta caixas de correio locais, POP3 a IMAP.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 rm -f po/no.{po,gmo}
 
@@ -78,6 +82,7 @@ rm -f po/no.{po,gmo}
 %{__autoheader}
 %{__autoconf}
 %configure \
+	--with-gss \
 	--with-ssl \
 	%{!?with_esmtp:--without-esmtp} \
 	%{!?with_gtkhtml:--disable-gtkhtml}\
