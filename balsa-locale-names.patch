@@ -1,11 +1,12 @@
---- balsa-2.3.2/configure.in.orig	2005-05-08 18:33:48.000000000 +0200
-+++ balsa-2.3.2/configure.in	2005-06-04 11:34:51.000000000 +0200
+diff -urBb balsa-2.3.5.org/configure.in balsa-2.3.5/configure.in
+--- balsa-2.3.5.org/configure.in	2005-09-20 20:09:03.000000000 +0200
++++ balsa-2.3.5/configure.in	2005-10-08 20:16:19.666526500 +0200
 @@ -187,7 +187,7 @@
  
  # gettext
  #
--ALL_LINGUAS="am az bg ca cs da de el en_CA en_GB es et fi fr ga he hi hr hu it ja ko lt lv ml ms nb nl nn no pa pl pt pt_BR ro ru rw sk sl sq sr sr@Latn sv tr uk vi wa zh_CN zh_TW"
-+ALL_LINGUAS="am az bg ca cs da de el en_CA en_GB es et fi fr ga he hi hr hu it ja ko lt lv ml ms nb nl nn pa pl pt pt_BR ro ru rw sk sl sq sr sr@Latn sv tr uk vi wa zh_CN zh_TW"
+-ALL_LINGUAS="am az bg ca cs da de el en_CA en_GB es et fi fr ga he hi hr hu it ja ko lt lv ml ms nb ne nl nn no pa pl pt pt_BR ro ru rw sk sl sq sr sr@Latn sv tr uk vi wa zh_CN zh_TW"
++ALL_LINGUAS="am az bg ca cs da de el en_CA en_GB es et fi fr ga he hi hr hu it ja ko lt lv ml ms nb ne nl nn pa pl pt pt_BR ro ru rw sk sl sq sr sr@Latn sv tr uk vi wa zh_CN zh_TW"
  GETTEXT_PACKAGE=balsa
  AC_SUBST(GETTEXT_PACKAGE)
  AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE",
