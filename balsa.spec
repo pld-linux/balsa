@@ -10,12 +10,12 @@ Summary(es):	Balsa es un lector de e-mail
 Summary(pl):	Balsa - klient poczty
 Summary(pt_BR):	Balsa é um leitor de e-mail
 Name:		balsa
-Version:	2.3.2
-Release:	3
+Version:	2.3.5
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
-# Source0-md5:	ab4d6febaca56d72d13acef819da193b
+# Source0-md5:	ccc5f1f11028dd604c6dac97017a1274
 Patch0:		%{name}-locale-names.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-includes.patch
