@@ -118,6 +118,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/idl/*.idl
 %{_mandir}/man1/*
 %{_omf_dest_dir}/%{name}
-%{_desktopdir}/*
+%{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
 %{_iconsdir}/hicolor/48x48/mimetypes/*.png
