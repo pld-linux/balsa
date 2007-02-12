@@ -6,9 +6,9 @@
 %bcond_without	gtkhtml		# build without HTML support
 #
 Summary:	Balsa Mail Client
-Summary(es):	Balsa es un lector de e-mail
-Summary(pl):	Balsa - klient poczty
-Summary(pt_BR):	Balsa é um leitor de e-mail
+Summary(es.UTF-8):   Balsa es un lector de e-mail
+Summary(pl.UTF-8):   Balsa - klient poczty
+Summary(pt_BR.UTF-8):   Balsa Ã© um leitor de e-mail
 Name:		balsa
 Version:	2.3.5
 Release:	2
@@ -52,16 +52,16 @@ Balsa is an e-mail reader.  This client is part of the GNOME
 desktop environment.  It supports local mailboxes, POP3 and
 IMAP.
 
-%description -l es
+%description -l es.UTF-8
 Balsa es un lector de e-mail. Es parte del entorno GNOME. Soporta
-cajas de correo electrónico locales, POP3 y IMAP.
+cajas de correo electrÃ³nico locales, POP3 y IMAP.
 
-%description -l pl
-Balsa to klient e-mail. Jest czê¶ci± ¶rodowiska GNOME. Obs³uguje POP3,
+%description -l pl.UTF-8
+Balsa to klient e-mail. Jest czÄ™Å›ciÄ… Å›rodowiska GNOME. ObsÅ‚uguje POP3,
 IMAP oraz lokalne skrzynki pocztowe. 
 
-%description -l pt_BR
-Balsa é um leitor de e-mail, parte do ambiente de desktop GNOME.
+%description -l pt_BR.UTF-8
+Balsa Ã© um leitor de e-mail, parte do ambiente de desktop GNOME.
 Suporta caixas de correio locais, POP3 a IMAP.
 
 %prep
