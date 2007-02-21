@@ -1,3 +1,8 @@
+# TODO:
+#	- lots files listed twice
+#       - not packaged /usr/share/locale/ar/LC_MESSAGES/balsa.mo
+#	- problems with id locale
+#	- configure with optional packages
 #
 # Conditional build:
 %bcond_without	ldap		# build without LDAP support
@@ -10,23 +15,22 @@ Summary(es.UTF-8):	Balsa es un lector de e-mail
 Summary(pl.UTF-8):	Balsa - klient poczty
 Summary(pt_BR.UTF-8):	Balsa é um leitor de e-mail
 Name:		balsa
-Version:	2.3.5
-Release:	2
+Version:	2.3.14
+Release:	0.1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
-# Source0-md5:	ccc5f1f11028dd604c6dac97017a1274
-Patch0:		%{name}-locale-names.patch
-Patch1:		%{name}-desktop.patch
-Patch2:		%{name}-includes.patch
-Patch3:		%{name}-no_hooks.patch
+# Source0-md5:	6a86f8bebc21bd279b9fd4d2a21a36c0
+Patch0:		%{name}-desktop.patch
+Patch1:		%{name}-includes.patch
+Patch2:		%{name}-without_id_lang.patch
 URL:		http://balsa.gnome.org/
 BuildRequires:	ORBit2-devel >= 1:2.12.4
 BuildRequires:	aspell-devel >= 2:0.50
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	heimdal-devel
-%{?with_esmtp:BuildRequires:	libesmtp-devel}
+%{?with_esmtp:BuildRequires:	libesmtp-devel >= 1.0.4}
 BuildRequires:	libgnomeprintui-devel >= 1.106.0
 BuildRequires:	glib2-devel >= 2.6.4-1
 BuildRequires:	gmime-devel >= 2.1.9
@@ -69,9 +73,6 @@ Suporta caixas de correio locais, POP3 a IMAP.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-
-rm -f po/no.{po,gmo}
 
 %build
 %{__intltoolize}
