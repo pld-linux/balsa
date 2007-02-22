@@ -1,14 +1,17 @@
 # TODO:
-#	- lots files listed twice
+#       - lots files listed twice
 #       - not packaged /usr/share/locale/ar/LC_MESSAGES/balsa.mo
-#	- problems with id locale
-#	- configure with optional packages
+#       - problems with id locale
 #
 # Conditional build:
 %bcond_without	ldap		# build without LDAP support
 %bcond_with	gpgme		# build with GPG support (experimental)
 %bcond_without	esmtp		# build without ESMTP support
 %bcond_without	gtkhtml		# build without HTML support
+%bcond_with	compface	# build with Compface
+%bcond_with	gtksourceview	# build with GtkSourceView
+%bcond_with	gtkspell	# build with GtkSpell
+%bcond_with	sqlite		# build with SQLite for GPE address books
 #
 Summary:	Balsa Mail Client
 Summary(es.UTF-8):	Balsa es un lector de e-mail
@@ -29,6 +32,7 @@ BuildRequires:	ORBit2-devel >= 1:2.12.4
 BuildRequires:	aspell-devel >= 2:0.50
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
+%{?with_compface:BuildRequires:	compface-devel}
 BuildRequires:	heimdal-devel
 %{?with_esmtp:BuildRequires:	libesmtp-devel >= 1.0.4}
 BuildRequires:	libgnomeprintui-devel >= 1.106.0
@@ -36,6 +40,8 @@ BuildRequires:	glib2-devel >= 2.6.4-1
 BuildRequires:	gmime-devel >= 2.1.9
 %{?with_gpgme:BuildRequires:	gpgme-devel >= 1:0.9.0}
 BuildRequires:	gtk+2-devel >= 2:2.2.0
+%{?with_gtksourceview:BuildRequires:	gtksourceview-devel}
+%{?with_gtkspell:BuildRequires:	gtkspell-devel}
 BuildRequires:	intltool
 %{?with_gtkhtml:BuildRequires:	libgtkhtml-devel >= 2.0}
 BuildRequires:	libltdl-devel
@@ -88,6 +94,10 @@ Suporta caixas de correio locais, POP3 a IMAP.
 	%{!?with_esmtp:--without-esmtp} \
 	%{!?with_gtkhtml:--disable-gtkhtml}\
 	%{?with_gpgme:--with-gpgme} \
+	%{?with_compface:--with-compface} \
+	%{?with_gtksourceview:--with-gtksourceview} \
+	%{?with_gtkspell:--with-gtkspell} \
+	%{?with_sqlite:--with-sqlite} \
 	%{?with_ldap:--with-ldap}
 %{__make}
 
