@@ -1,5 +1,4 @@
 # TODO:
-#       - lots files listed twice
 #       - not packaged /usr/share/locale/ar/LC_MESSAGES/balsa.mo
 #       - problems with id locale
 #
@@ -20,7 +19,7 @@ Summary(pl.UTF-8):	Balsa - klient poczty
 Summary(pt_BR.UTF-8):	Balsa é um leitor de e-mail
 Name:		balsa
 Version:	2.3.14
-Release:	0.1
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
