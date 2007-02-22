@@ -53,6 +53,8 @@ BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pcre-devel >= 3.0
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper >= 0.1.4
+# actually, it requires sqlite >= 2.8
+%{?with_sqlite:BuildRequires:	sqlite3-devel}
 %{?with_gpgme:Requires:	gpgme >= 1:0.9.0}
 Requires(post,postun):	scrollkeeper
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
