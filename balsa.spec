@@ -10,7 +10,7 @@
 %bcond_with	gtkhtml2	# build with libgtkhtml-2 (default gtkhtml-3)
 %bcond_with	compface	# build with Compface
 %bcond_with	gtksourceview	# build with GtkSourceView
-%bcond_with	gtkspell	# build with GtkSpell
+%bcond_without	gtkspell	# build without GtkSpell
 %bcond_with	sqlite		# build with SQLite for GPE address books
 #
 Summary:	Balsa Mail Client
