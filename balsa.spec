@@ -8,6 +8,7 @@
 %bcond_with	gpgme		# build with GPG support (experimental)
 %bcond_without	esmtp		# build without ESMTP support
 %bcond_without	gtkhtml		# build without HTML support
+%bcond_with	gtkhtml2	# build with libgtkhtml-2 (default gtkhtml-3)
 %bcond_with	compface	# build with Compface
 %bcond_with	gtksourceview	# build with GtkSourceView
 %bcond_with	gtkspell	# build with GtkSpell
@@ -43,7 +44,10 @@ BuildRequires:	gtk+2-devel >= 2:2.2.0
 %{?with_gtksourceview:BuildRequires:	gtksourceview-devel}
 %{?with_gtkspell:BuildRequires:	gtkspell-devel}
 BuildRequires:	intltool
-%{?with_gtkhtml:BuildRequires:	libgtkhtml-devel >= 2.0}
+%if %{with gtkhtml}
+%{?with_gtkhtml2:BuildRequires:	libgtkhtml-devel >= 2.0}
+%{!?with_gtkhtml2:BuildRequires:	gtkhtml-devel >= 3.0}
+%endif
 BuildRequires:	libltdl-devel
 BuildRequires:	libgnomeprintui-devel >= 2.1.4
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
@@ -95,6 +99,7 @@ Suporta caixas de correio locais, POP3 a IMAP.
 	--with-ssl \
 	%{!?with_esmtp:--without-esmtp} \
 	%{!?with_gtkhtml:--disable-gtkhtml}\
+	%{?with_gtkhtml2:--with-gtkhtml=2}\
 	%{?with_gpgme:--with-gpgme} \
 	%{?with_compface:--with-compface} \
 	%{?with_gtksourceview:--with-gtksourceview} \
