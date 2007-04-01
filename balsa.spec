@@ -33,9 +33,6 @@ BuildRequires:	aspell-devel >= 2:0.50
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 %{?with_compface:BuildRequires:	compface-devel}
-BuildRequires:	krb5-devel
-%{?with_esmtp:BuildRequires:	libesmtp-devel >= 1.0.4}
-BuildRequires:	libgnomeprintui-devel >= 1.106.0
 BuildRequires:	glib2-devel >= 2.6.4-1
 BuildRequires:	gmime-devel >= 2.1.9
 %{?with_gpgme:BuildRequires:	gpgme-devel >= 1:0.9.0}
@@ -43,13 +40,15 @@ BuildRequires:	gtk+2-devel >= 2:2.2.0
 %{?with_gtksourceview:BuildRequires:	gtksourceview-devel}
 %{?with_gtkspell:BuildRequires:	gtkspell-devel}
 BuildRequires:	intltool
+BuildRequires:	krb5-devel
+%{?with_esmtp:BuildRequires:	libesmtp-devel >= 1.0.4}
 %if %{with gtkhtml}
 %{?with_gtkhtml2:BuildRequires:	libgtkhtml-devel >= 2.0}
 %{!?with_gtkhtml2:BuildRequires:	gtkhtml-devel >= 3.0}
 %endif
-BuildRequires:	libltdl-devel
 BuildRequires:	libgnomeprintui-devel >= 2.1.4
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
+BuildRequires:	libltdl-devel
 BuildRequires:	libtool
 %{?with_ldap:BuildRequires:	openldap-devel >= 2.3.0}
 BuildRequires:	openssl-devel >= 0.9.7d
