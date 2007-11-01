@@ -19,7 +19,7 @@ Summary(pl.UTF-8):	Balsa - klient poczty
 Summary(pt_BR.UTF-8):	Balsa é um leitor de e-mail
 Name:		balsa
 Version:	2.3.20
-Release:	0.1
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
@@ -36,7 +36,7 @@ BuildRequires:	automake
 BuildRequires:	glib2-devel >= 2.6.4-1
 BuildRequires:	gmime-devel >= 2.1.9
 %{?with_gpgme:BuildRequires:	gpgme-devel >= 1:0.9.0}
-BuildRequires:	gtk+2-devel >= 2:2.2.0
+BuildRequires:	gtk+2-devel >= 2:2.10.0
 %{?with_gtksourceview:BuildRequires:	gtksourceview-devel}
 %{?with_gtkspell:BuildRequires:	gtkspell-devel}
 BuildRequires:	intltool
@@ -46,9 +46,9 @@ BuildRequires:	krb5-devel
 %{?with_gtkhtml2:BuildRequires:	libgtkhtml-devel >= 2.0}
 %{!?with_gtkhtml2:BuildRequires:	gtkhtml-devel >= 3.0}
 %endif
-BuildRequires:	libgnomeprintui-devel >= 2.1.4
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libltdl-devel
+BuildRequires:	libnotify-devel
 BuildRequires:	libtool
 %{?with_ldap:BuildRequires:	openldap-devel >= 2.3.0}
 BuildRequires:	openssl-devel >= 0.9.7d
