@@ -50,7 +50,7 @@ BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libltdl-devel
 BuildRequires:	libnotify-devel
 BuildRequires:	libtool
-%{?with_ldap:BuildRequires:	openldap-devel >= 2.3.0}
+%{?with_ldap:BuildRequires:	openldap-devel >= 2.4.6}
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pcre-devel >= 3.0
 BuildRequires:	rpmbuild(macros) >= 1.197
