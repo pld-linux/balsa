@@ -19,7 +19,7 @@ Summary(pl.UTF-8):	Balsa - klient poczty
 Summary(pt_BR.UTF-8):	Balsa é um leitor de e-mail
 Name:		balsa
 Version:	2.3.20
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
@@ -59,6 +59,8 @@ BuildRequires:	scrollkeeper >= 0.1.4
 %{?with_sqlite:BuildRequires:	sqlite3-devel}
 %{?with_gpgme:Requires:	gpgme >= 1:0.9.0}
 Requires(post,postun):	scrollkeeper
+# sr@Latn vs. sr@latin
+Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -112,6 +114,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+[ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
+	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
 %find_lang %{name} --with-gnome --all-name
 
 %clean
