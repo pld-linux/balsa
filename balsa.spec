@@ -18,15 +18,14 @@ Summary(es.UTF-8):	Balsa es un lector de e-mail
 Summary(pl.UTF-8):	Balsa - klient poczty
 Summary(pt_BR.UTF-8):	Balsa é um leitor de e-mail
 Name:		balsa
-Version:	2.3.20
-Release:	3
+Version:	2.4.0
+Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://balsa.gnome.org/%{name}-%{version}.tar.bz2
-# Source0-md5:	64763beb79731649da7e327b1140843a
+Source0:	http://pawsa.fedorapeople.org/balsa/%{name}-%{version}.tar.bz2
+# Source0-md5:	47d68219a5ee768f1ebd2502a9c3c6f2
 Patch0:		%{name}-desktop.patch
-Patch1:		%{name}-includes.patch
-Patch2:		%{name}-without_id_lang.patch
+Patch1:		%{name}-without_id_lang.patch
 URL:		http://balsa.gnome.org/
 BuildRequires:	ORBit2-devel >= 1:2.12.4
 BuildRequires:	aspell-devel >= 2:0.50
@@ -34,7 +33,7 @@ BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 %{?with_compface:BuildRequires:	compface-devel}
 BuildRequires:	glib2-devel >= 2.6.4-1
-BuildRequires:	gmime-devel >= 2.1.9
+BuildRequires:	gmime-devel >= 2.4.0
 %{?with_gpgme:BuildRequires:	gpgme-devel >= 1:0.9.0}
 BuildRequires:	gtk+2-devel >= 2:2.10.0
 %{?with_gtksourceview:BuildRequires:	gtksourceview-devel}
@@ -84,11 +83,8 @@ Suporta caixas de correio locais, POP3 a IMAP.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
-%{__intltoolize}
-%{__glib_gettextize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
