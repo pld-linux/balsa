@@ -5,5 +5,5 @@ diff -urN balsa-2.3.2.orig/balsa.desktop.in balsa-2.3.2/balsa.desktop.in
  Terminal=false
  Type=Application
  StartupNotify=true
--Categories=GNOME;Application;Network;
+-Categories=GNOME;Network;Email;
 +Categories=GTK;GNOME;Network;Email;
