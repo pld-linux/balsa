@@ -32,18 +32,21 @@ BuildRequires:	aspell-devel >= 2:0.50
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 %{?with_compface:BuildRequires:	compface-devel}
+BuildRequires:	docbook-dtd412-xml
+BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 2.6.4-1
 BuildRequires:	gmime-devel >= 2.4.0
+BuildRequires:	gnome-doc-utils
 %{?with_gpgme:BuildRequires:	gpgme-devel >= 1:0.9.0}
 BuildRequires:	gtk+2-devel >= 2:2.10.0
 %{?with_gtksourceview:BuildRequires:	gtksourceview-devel}
 %{?with_gtkspell:BuildRequires:	gtkspell-devel}
-BuildRequires:	intltool
 BuildRequires:	heimdal-devel
+BuildRequires:	intltool
 %{?with_esmtp:BuildRequires:	libesmtp-devel >= 1.0.4}
 %if %{with gtkhtml}
-%{?with_gtkhtml2:BuildRequires:	libgtkhtml-devel >= 2.0}
 %{!?with_gtkhtml2:BuildRequires:	gtkhtml-devel >= 3.0}
+%{?with_gtkhtml2:BuildRequires:	libgtkhtml-devel >= 2.0}
 %endif
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libltdl-devel
@@ -52,6 +55,7 @@ BuildRequires:	libtool
 %{?with_ldap:BuildRequires:	openldap-devel >= 2.4.6}
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pcre-devel >= 3.0
+BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper >= 0.1.4
 # actually, it requires sqlite >= 2.8
@@ -73,7 +77,7 @@ cajas de correo electrónico locales, POP3 y IMAP.
 
 %description -l pl.UTF-8
 Balsa to klient e-mail. Jest częścią środowiska GNOME. Obsługuje POP3,
-IMAP oraz lokalne skrzynki pocztowe. 
+IMAP oraz lokalne skrzynki pocztowe.
 
 %description -l pt_BR.UTF-8
 Balsa é um leitor de e-mail, parte do ambiente de desktop GNOME.
