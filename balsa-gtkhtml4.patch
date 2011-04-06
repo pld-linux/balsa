@@ -1,0 +1,42 @@
+--- balsa-2.4.9/configure.in~	2010-11-18 23:18:23.000000000 +0100
++++ balsa-2.4.9/configure.in	2011-04-06 16:06:54.083684399 +0200
+@@ -124,10 +124,10 @@
+                   [with_gss=$withval],[with_gss=no])
+ 
+ AC_ARG_WITH(html-widget,
+-            AC_HELP_STRING([--with-html-widget=(no|gtkhtml2|gtkhtml3|webkit)],
+-                           [select the HTML renderer (default gtkhtml3)]),
++            AC_HELP_STRING([--with-html-widget=(no|gtkhtml2|gtkhtml3|gtkhtml4|webkit)],
++                           [select the HTML renderer (default gtkhtml4)]),
+             [use_html_widget=$withval],
+-            [use_html_widget=gtkhtml3])
++            [use_html_widget=gtkhtml4])
+ 
+ AC_ARG_WITH([gtksourceview],
+    AC_HELP_STRING([--with-gtksourceview],
+@@ -385,6 +385,11 @@
+         PKG_CHECK_MODULES(HTML, [ libgtkhtml-3.14 ])
+         AC_DEFINE(HAVE_GTKHTML3,1,[Defined when GtkHtml-3 can be used.])
+     ;;
++    gtkhtml4)
++        AC_MSG_RESULT([$use_html_widget])
++	PKG_CHECK_MODULES(HTML, [ libgtkhtml-4.0 ])
++	AC_DEFINE(HAVE_GTKHTML4,1,[Defined when GtkHtml-4 can be used.])
++    ;;
+     webkit)
+         AC_MSG_RESULT([$use_html_widget])
+         if ! $PKG_CONFIG --atleast-version=1.1.14 webkit-1.0; then
+--- balsa-2.4.9/libbalsa/html.c~	2010-11-18 21:55:32.000000000 +0100
++++ balsa-2.4.9/libbalsa/html.c	2011-04-06 16:10:07.390356929 +0200
+@@ -745,9 +745,9 @@
+     requisition->height = gtk_adjustment_get_upper(adjustment);
+ }
+ 
+-# ifdef HAVE_GTKHTML3
++# ifdef HAVE_GTKHTML3 || HAVE_GTKHTML4
+ 
+-/* Code for GtkHTML-3 */
++/* Code for GtkHTML-3 and GtkHTML-4*/
+ 
+ #  include <gtkhtml/gtkhtml.h>
+ #  include <gtkhtml/gtkhtml-stream.h>

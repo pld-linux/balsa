@@ -25,6 +25,7 @@ Group:		X11/Applications
 Source0:	http://pawsa.fedorapeople.org/balsa/%{name}-%{version}.tar.bz2
 # Source0-md5:	bd7ac44f0cf3117a5fdb46d17dac2b51
 Patch0:		%{name}-desktop.patch
+Patch1:		%{name}-gtkhtml4.patch
 URL:		http://balsa.gnome.org/
 BuildRequires:	ORBit2-devel >= 1:2.12.4
 BuildRequires:	aspell-devel >= 2:0.50
@@ -85,6 +86,7 @@ Suporta caixas de correio locais, POP3 a IMAP.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
