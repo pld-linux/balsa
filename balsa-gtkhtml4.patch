@@ -33,7 +33,7 @@
  }
  
 -# ifdef HAVE_GTKHTML3
-+# ifdef HAVE_GTKHTML3 || ifdef HAVE_GTKHTML4
++# if defined (HAVE_GTKHTML3) || defined (HAVE_GTKHTML4)
  
 -/* Code for GtkHTML-3 */
 +/* Code for GtkHTML-3 and GtkHTML-4*/
