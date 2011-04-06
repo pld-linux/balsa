@@ -1,6 +1,7 @@
 # TODO:
 #       - not packaged /usr/share/locale/ar/LC_MESSAGES/balsa.mo
 #       - problems with id locale
+#	- finish support for gtkhtml-4
 #
 # Conditional build:
 %bcond_without	ldap		# build without LDAP support
@@ -19,7 +20,7 @@ Summary(pl.UTF-8):	Balsa - klient poczty
 Summary(pt_BR.UTF-8):	Balsa é um leitor de e-mail
 Name:		balsa
 Version:	2.4.9
-Release:	1
+Release:	0.1
 License:	GPL v3+
 Group:		X11/Applications
 Source0:	http://pawsa.fedorapeople.org/balsa/%{name}-%{version}.tar.bz2
