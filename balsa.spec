@@ -137,8 +137,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/sound/events/*
 %{_datadir}/%{name}
 %{_datadir}/sounds/%{name}
-%{_libdir}/bonobo/servers/*.server
-%{_datadir}/idl/*.idl
 %{_mandir}/man1/*
 %{_omf_dest_dir}/%{name}
 %{_desktopdir}/*.desktop
