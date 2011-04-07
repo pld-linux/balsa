@@ -1,7 +1,8 @@
 # TODO:
 #       - not packaged /usr/share/locale/ar/LC_MESSAGES/balsa.mo
 #       - problems with id locale
-#	- finish support for gtkhtml-4
+#	- fix that: 
+#	Gtk-ERROR **: GTK+ 2.x symbols detected. Using GTK+ 2.x and GTK+ 3 in the same process is not supported
 #
 # Conditional build:
 %bcond_without	ldap		# build without LDAP support
