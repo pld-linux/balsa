@@ -53,6 +53,7 @@ BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libltdl-devel
 BuildRequires:	libnotify-devel
 BuildRequires:	libtool
+BuildRequires:	libunique-devel
 %{?with_ldap:BuildRequires:	openldap-devel >= 2.4.6}
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pcre-devel >= 3.0
@@ -98,6 +99,7 @@ Suporta caixas de correio locais, POP3 a IMAP.
 %configure \
 	--with-gss \
 	--with-ssl \
+	--with-unique \
 	%{!?with_esmtp:--without-esmtp} \
 	%{!?with_gtkhtml:--disable-gtkhtml}\
 	%{?with_gtkhtml2:--with-gtkhtml=2}\
