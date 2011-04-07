@@ -1,42 +1,120 @@
 --- balsa-2.4.9/configure.in~	2010-11-18 23:18:23.000000000 +0100
-+++ balsa-2.4.9/configure.in	2011-04-06 16:06:54.083684399 +0200
-@@ -124,10 +124,10 @@
++++ balsa-2.4.9/configure.in	2011-04-07 17:47:43.470041523 +0200
+@@ -124,7 +124,7 @@
                    [with_gss=$withval],[with_gss=no])
  
  AC_ARG_WITH(html-widget,
 -            AC_HELP_STRING([--with-html-widget=(no|gtkhtml2|gtkhtml3|webkit)],
--                           [select the HTML renderer (default gtkhtml3)]),
-+            AC_HELP_STRING([--with-html-widget=(no|gtkhtml2|gtkhtml3|gtkhtml4|webkit)],
-+                           [select the HTML renderer (default gtkhtml4)]),
++            AC_HELP_STRING([--with-html-widget=(no|gtkhtml2|gtkhtml4|webkit)],
+                            [select the HTML renderer (default gtkhtml3)]),
              [use_html_widget=$withval],
--            [use_html_widget=gtkhtml3])
-+            [use_html_widget=gtkhtml4])
- 
- AC_ARG_WITH([gtksourceview],
-    AC_HELP_STRING([--with-gtksourceview],
-@@ -385,6 +385,11 @@
-         PKG_CHECK_MODULES(HTML, [ libgtkhtml-3.14 ])
-         AC_DEFINE(HAVE_GTKHTML3,1,[Defined when GtkHtml-3 can be used.])
+             [use_html_widget=gtkhtml3])
+@@ -380,10 +380,13 @@
+         PKG_CHECK_MODULES(HTML, [ libgtkhtml-2.0 ])
+         AC_DEFINE(HAVE_GTKHTML2,1,[Defined when GtkHtml-2 can be used.])
      ;;
+-    gtkhtml3)
 +    gtkhtml4)
-+        AC_MSG_RESULT([$use_html_widget])
-+	PKG_CHECK_MODULES(HTML, [ libgtkhtml-4.0 ])
+         AC_MSG_RESULT([$use_html_widget])
+-        PKG_CHECK_MODULES(HTML, [ libgtkhtml-3.14 ])
+-        AC_DEFINE(HAVE_GTKHTML3,1,[Defined when GtkHtml-3 can be used.])
++	PKG_CHECK_MODULES(HTML, [ libgtkhtml-4.0 ], [],
++	[PKG_CHECK_MODULES(HTML, [ libgtkhtml-4.0 ],[],
++	[AC_MSG_ERROR([*** You enabled gtkhtml4 but it was not
++	 found.])])])
 +	AC_DEFINE(HAVE_GTKHTML4,1,[Defined when GtkHtml-4 can be used.])
-+    ;;
+     ;;
      webkit)
          AC_MSG_RESULT([$use_html_widget])
-         if ! $PKG_CONFIG --atleast-version=1.1.14 webkit-1.0; then
 --- balsa-2.4.9/libbalsa/html.c~	2010-11-18 21:55:32.000000000 +0100
-+++ balsa-2.4.9/libbalsa/html.c	2011-04-06 16:10:07.390356929 +0200
-@@ -745,9 +745,9 @@
-     requisition->height = gtk_adjustment_get_upper(adjustment);
++++ balsa-2.4.9/libbalsa/html.c	2011-04-07 17:55:00.813390756 +0200
+@@ -23,13 +23,13 @@
+ /*
+  * Support for HTML mail parts.
+  *
+- * Balsa supports three HTML engines: GtkHtml-2, GtkHTML-3, and WebKit.
++ * Balsa supports three HTML engines: GtkHtml-2, GtkHTML-4, and WebKit.
+  * The symbol HAVE_HTML_WIDGET is defined if HTML support is requested at
+  * configure time, and the requested engine is available.
+  *
+  * This file contains all code that depends on which widget is being
+  * used. Elsewhere, HTML support code should be conditional on
+- * HAVE_HTML_WIDGET, but none of HAVE_GTKHTML2, HAVE_GTKHTML3, or
++ * HAVE_HTML_WIDGET, but none of HAVE_GTKHTML2, HAVE_GTKHTML4, or
+  * HAVE_WEBKIT should be referenced outside this file.
+  *
+  * As of this writing (2010-01), WebKit offers the most complete API,
+@@ -731,23 +731,9 @@
+         (*info->hover_cb) (uri);
  }
  
+-static void
+-lbh_size_request_cb(GtkWidget      * widget,
+-                    GtkRequisition * requisition,
+-                    gpointer         data)
+-{
+-    GtkLayout *layout = GTK_LAYOUT(widget);
+-    GtkAdjustment *adjustment;
+-
+-    adjustment = gtk_layout_get_hadjustment(layout);
+-    requisition->width = gtk_adjustment_get_upper(adjustment);
+-    adjustment = gtk_layout_get_vadjustment(layout);
+-    requisition->height = gtk_adjustment_get_upper(adjustment);
+-}
+-
 -# ifdef HAVE_GTKHTML3
-+# if defined (HAVE_GTKHTML3) || defined (HAVE_GTKHTML4)
++# ifdef HAVE_GTKHTML4
  
 -/* Code for GtkHTML-3 */
-+/* Code for GtkHTML-3 and GtkHTML-4*/
++/* Code for GtkHTML-4 */
  
  #  include <gtkhtml/gtkhtml.h>
  #  include <gtkhtml/gtkhtml-stream.h>
+@@ -870,9 +856,6 @@
+                      G_CALLBACK(libbalsa_html_url_requested),
+                      body->message);
+ 
+-    g_signal_connect(widget, "size-request",
+-                     G_CALLBACK(lbh_size_request_cb), info);
+-
+     return widget;
+ }
+ 
+@@ -974,7 +957,7 @@
+     g_object_unref(operation);
+ }
+ 
+-# else				/* HAVE_GTKHTML3 */
++# else				/* HAVE_GTKHTML4 */
+ 
+ /* Code for GtkHtml-2 */
+ 
+@@ -993,6 +976,19 @@
+     html_stream_close(stream);
+ }
+ 
++static void
++lbh_size_request_cb(GtkWidget * widget
++ GtkRequisition * requisition,
++ gpointer data)
++{
++ GtkAdjustment *hadjustment, *vadjustment;
++
++ g_object_get(G_OBJECT(widget), "hadjustment", &hadjustment,
++ "vadjustment", &vadjustment, NULL);
++ requisition->width = gtk_adjustment_get_upper(hadjustment);
++ requisition->height = gtk_adjustment_get_upper(vadjustment);
++}
++
+ /* Create a new HtmlView widget:
+  * text			the HTML source;
+  * len			length of text;
+@@ -1130,7 +1126,7 @@
+ {
+ }
+ 
+-# endif				/* HAVE_GTKHTML3 */
++# endif				/* HAVE_GTKHTML4 */
+ 
+ /* Common code for both widgets. */
+ 
