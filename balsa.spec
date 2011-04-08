@@ -47,7 +47,7 @@ BuildRequires:	heimdal-devel
 BuildRequires:	intltool
 %{?with_esmtp:BuildRequires:	libesmtp-devel >= 1.0.4}
 %if %{with gtkhtml}
-%{!?with_gtkhtml2:BuildRequires:	gtkhtml-devel >= 3.14}
+%{!?with_gtkhtml2:BuildRequires:	gtkhtml-devel >= 4.0}
 %{?with_gtkhtml2:BuildRequires:	libgtkhtml-devel >= 2.0}
 %endif
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
