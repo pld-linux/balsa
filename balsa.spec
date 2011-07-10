@@ -1,7 +1,6 @@
 # TODO:
-#       - not packaged /usr/share/locale/ar/LC_MESSAGES/balsa.mo
-#       - problems with id locale
-#	- fix that: 
+# - use webkit as html widget?
+# - gtkhtml4 causes gtk2/gtk3 conflict:
 #	Gtk-ERROR **: GTK+ 2.x symbols detected. Using GTK+ 2.x and GTK+ 3 in the same process is not supported
 #
 # Conditional build:
@@ -9,19 +8,19 @@
 %bcond_with	gpgme		# build with GPG support (experimental)
 %bcond_without	esmtp		# build without ESMTP support
 %bcond_without	gtkhtml		# build without HTML support
-%bcond_with	gtkhtml2	# build with libgtkhtml-2 (default gtkhtml-3)
+%bcond_without	gtkhtml2	# build with libgtkhtml-2 (default gtkhtml-4)
 %bcond_with	compface	# build with Compface
 %bcond_with	gtksourceview	# build with GtkSourceView
 %bcond_without	gtkspell	# build without GtkSpell
 %bcond_with	sqlite		# build with SQLite for GPE address books
-#
+
 Summary:	Balsa Mail Client
 Summary(es.UTF-8):	Balsa es un lector de e-mail
 Summary(pl.UTF-8):	Balsa - klient poczty
 Summary(pt_BR.UTF-8):	Balsa é um leitor de e-mail
 Name:		balsa
 Version:	2.4.9
-Release:	0.1
+Release:	0.3
 License:	GPL v3+
 Group:		X11/Applications
 Source0:	http://pawsa.fedorapeople.org/balsa/%{name}-%{version}.tar.bz2
@@ -70,9 +69,8 @@ Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Balsa is an e-mail reader.  This client is part of the GNOME
-desktop environment.  It supports local mailboxes, POP3 and
-IMAP.
+Balsa is an e-mail reader. This client is part of the GNOME desktop
+environment. It supports local mailboxes, POP3 and IMAP.
 
 %description -l es.UTF-8
 Balsa es un lector de e-mail. Es parte del entorno GNOME. Soporta
@@ -89,7 +87,7 @@ Suporta caixas de correio locais, POP3 a IMAP.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
+%{!?with_gtkhtml2:%patch1 -p1}
 
 %build
 %{__libtoolize}
@@ -102,8 +100,11 @@ Suporta caixas de correio locais, POP3 a IMAP.
 	--with-ssl \
 	--with-unique \
 	%{!?with_esmtp:--without-esmtp} \
-	%{!?with_gtkhtml:--disable-gtkhtml}\
-	%{?with_gtkhtml2:--with-gtkhtml=2}\
+%if %{with gtkhtml}
+	--with-html-widget=%{?with_gtkhtml2:gtkhtml2}%{!?with_gtkhtml2:gtkhtml4} \
+%else
+	--disable-gtkhtml \
+%endif
 	%{?with_gpgme:--with-gpgme} \
 	%{?with_compface:--with-compface} \
 	%{?with_gtksourceview:--with-gtksourceview} \
@@ -134,12 +135,14 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
-%attr(755,root,root) %{_bindir}/*
-%{_sysconfdir}/sound/events/*
+%attr(755,root,root) %{_bindir}/balsa
+%attr(755,root,root) %{_bindir}/balsa-ab
+%dir %{_sysconfdir}/sound/events
+%{_sysconfdir}/sound/events/balsa.soundlist
 %{_datadir}/%{name}
 %{_datadir}/sounds/%{name}
-%{_mandir}/man1/*
+%{_mandir}/man1/balsa.1*
 %{_omf_dest_dir}/%{name}
-%{_desktopdir}/*.desktop
-%{_pixmapsdir}/*
+%{_desktopdir}/balsa.desktop
+%{_pixmapsdir}/gnome-balsa2.png
 %{_iconsdir}/hicolor/48x48/mimetypes/*.png
