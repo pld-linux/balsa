@@ -19,12 +19,12 @@ Summary(es.UTF-8):	Balsa es un lector de e-mail
 Summary(pl.UTF-8):	Balsa - klient poczty
 Summary(pt_BR.UTF-8):	Balsa é um leitor de e-mail
 Name:		balsa
-Version:	2.4.9
-Release:	0.3
+Version:	2.4.10
+Release:	0.1
 License:	GPL v3+
 Group:		X11/Applications
 Source0:	http://pawsa.fedorapeople.org/balsa/%{name}-%{version}.tar.bz2
-# Source0-md5:	bd7ac44f0cf3117a5fdb46d17dac2b51
+# Source0-md5:	fa2b7cb9d248912ac2e3dcc08cd6aa5b
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-gtkhtml4.patch
 URL:		http://balsa.gnome.org/
@@ -99,6 +99,7 @@ Suporta caixas de correio locais, POP3 a IMAP.
 	--with-gss \
 	--with-ssl \
 	--with-unique \
+	--disable-silent-rules \
 	%{!?with_esmtp:--without-esmtp} \
 %if %{with gtkhtml}
 	--with-html-widget=%{?with_gtkhtml2:gtkhtml2}%{!?with_gtkhtml2:gtkhtml4} \
