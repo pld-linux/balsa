@@ -1,7 +1,5 @@
 # TODO:
 # - use webkit as html widget?
-# - gtkhtml4 causes gtk2/gtk3 conflict:
-#	Gtk-ERROR **: GTK+ 2.x symbols detected. Using GTK+ 2.x and GTK+ 3 in the same process is not supported
 #
 # Conditional build:
 %bcond_without	ldap		# build without LDAP support
@@ -20,7 +18,7 @@ Summary(pl.UTF-8):	Balsa - klient poczty
 Summary(pt_BR.UTF-8):	Balsa é um leitor de e-mail
 Name:		balsa
 Version:	2.4.10
-Release:	0.1
+Release:	1
 License:	GPL v3+
 Group:		X11/Applications
 Source0:	http://pawsa.fedorapeople.org/balsa/%{name}-%{version}.tar.bz2
