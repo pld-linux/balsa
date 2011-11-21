@@ -38,6 +38,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 2.6.4-1
 BuildRequires:	gmime-devel >= 2.4.0
 BuildRequires:	gnome-doc-utils
+BuildRequires:	gnome-icon-theme
 %{?with_gpgme:BuildRequires:	gpgme-devel >= 1:0.9.0}
 BuildRequires:	gtk+2-devel >= 2:2.10.0
 %{?with_gtksourceview:BuildRequires:	gtksourceview-devel}
