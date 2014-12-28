@@ -32,7 +32,7 @@ BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 %{?with_compface:BuildRequires:	compface-devel}
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 2.6.4-1
 BuildRequires:	gmime-devel >= 2.4.0
 BuildRequires:	gnome-doc-utils
