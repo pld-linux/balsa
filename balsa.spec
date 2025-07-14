@@ -85,7 +85,7 @@ Suporta caixas de correio locais, POP3 a IMAP.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 %{!?with_gtkhtml2:%patch1 -p1}
 
 %build
